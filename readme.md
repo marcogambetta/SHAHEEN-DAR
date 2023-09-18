@@ -3,3 +3,5 @@ This repository contains the code needed to extract and interpret DAR raw data a
 in several different formats including SEGY
 
 ## General data flow scheme
+![solarized vim](https://github.com/marcogambetta/SHAHEEN-DAR/tree/main/RES/IMG_00.png)
+
