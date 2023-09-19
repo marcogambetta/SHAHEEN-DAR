@@ -46,6 +46,8 @@ DAR_TEST suite is available for download within this repository [DAR_TEST Suite]
 
 Once DAR is connected the button Recording becomes active. Press it and the Recording Sequence Dialog pops up.
 
+![sketch](/RES/IMG_02.png)
+
 1. set the sampling rate
 2. set the gain for geophones
 3. set the gain for hydrophone
