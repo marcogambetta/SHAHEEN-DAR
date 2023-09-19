@@ -12,7 +12,7 @@ Using the provided tool DART_TEST (Windows) it is possible to interpret and down
 [^1]: Format description is provided in [DAR RAW FILE FORMAT SPECS(DOCUMENTATION/DAR RAW FILE FORMAT SPECS.pdf)
 
 ### Configuration file
-The configuration file is used by the app to convert ADC  to physical data, to set gain[^1], and to define the way the SEGY data is created
+The configuration file is used by the app to convert ADC  to physical data, to set gain[^2], and to define the way the SEGY data is created
 ```
 geophone_scalar = 0.000000029017
 hydrophone_scalar = 0.00000029597
@@ -21,7 +21,7 @@ hydrophone_gain = 8
 SEGY_samples_before_event =2000
 SEGY_trace_samples = 5000
 ```
-[^1]: there is no way to store gain information in any file when running the acquisition. Gain must be manually written in some configuration. Best Practice is to make a note in the comment box before launching acquisition with DAT_TEST
+[^2]: there is no way to store gain information in any file when running the acquisition. Gain must be manually written in some configuration. Best Practice is to make a note in the comment box before launching acquisition with DAT_TEST
 
 Sensors scalars are defined for the specific sensors mounted on the shaheens. Altering/replacing the sensor requires scalars adjustment
 
