@@ -73,7 +73,7 @@ Once the acquisition is stopped, the user can download data. To start the proced
 
 In the dialog make sure to have the checkbox DO_RAW checked. Set the wanted folder and define the base for filenames.
 
-Press START butto.
+Press START button.
 
 All sequences existing on the disk will be downloaded. Corresponding RAW files will be created.
 Process the RAW files with DAR_TOOLKIT.
