@@ -109,3 +109,7 @@ Channel3_ADC  2001000.0                  104977.868195           -5174348.0     
 
 
 ```
+
+Note that seismic data are not corrected by time skew, while the time drift coefficiente, if available, are recorded as attributes. Also Scalars and gains are stored as attributes.
+
+Channels' physical meaning is defined in the corresponding attribute *channels*
