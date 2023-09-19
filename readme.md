@@ -25,13 +25,14 @@ SEGY_trace_samples = 5000
 
 Sensor scalars are defined for the specific sensors mounted on the shaheens. Altering/replacing the sensor requires scalar adjustment
 
-#HOW TO START ACQUISITION
+## HOW TO START ACQUISITION
 
 Data acquisition is managed by DAR_TEST software, created by SBGS [SeaBed GeoSolutions]. This company winded off in 2018, thus there is no support available for their products.
 
 DAR_TEST suite is available for download within this repository [DAR_TEST Suite](RES\205-DAR_SOFTWARE.zip). DAR_TEST documentation from the author is included in the archive.
 
-##Start up Acquisition Procedure 
+
+### Start up Acquisition Procedure 
 
 1. Configure an Ethernet router to operate in 192.168.0.nnn
 2. Power up the AUV
