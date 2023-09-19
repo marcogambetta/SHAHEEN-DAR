@@ -12,11 +12,12 @@ Using the provided tool DART_TEST (Windows) it is possible to interpret and down
 
 ###Configuration file
 The configuration file is used by the app to convert ADC  to physical data, to set gain and define the way the SEGY data is created
-'''
+```
 geophone_scalar = 0.000000029017
 hydrophone_scalar = 0.00000029597
 geophone_gain = 8
 hydrophone_gain = 8
 SEGY_samples_before_event =2000
 SEGY_trace_samples = 5000
-'''
+```
+
