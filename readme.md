@@ -22,5 +22,7 @@ SEGY_trace_samples = 5000
 ```
 [^1]: there is no way to store gain information in any file when running the acquisition. Gain must be manually written in some configuration. Best Practice is to make a note in the comment box before launching acquisition with DAT_TEST
 
+Sensors scalars are defined for the specific sensors mounted on the shaheens. Altering/replacing the sensor requires scalars adjustment
+
 
 
