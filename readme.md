@@ -52,9 +52,9 @@ Once DAR is connected the button Recording becomes active. Press it and the Reco
 5. check that channels 0 to 4 are enabled
 6. fill the comment text box with gain values and other information you may want to store
 
-1. First list item
-   - First nested list item
-     - Second nested list item
+7. First list item
+   - If DAR is synchronized with GPS just press SET TIME
+   - If GPS Sync is not available then check the checkbox Use CPU Time
 
 7. TIME SYNC
    _ If DAR is synchronized with GPS just press SET TIME
