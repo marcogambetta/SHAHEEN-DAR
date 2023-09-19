@@ -32,7 +32,7 @@ Data acquisition is managed by DAR_TEST software, created by SBGS [SeaBed GeoSol
 DAR_TEST suite is available for download within this repository [DAR_TEST Suite](RES\205-DAR_SOFTWARE.zip). DAR_TEST documentation from the author is included in the archive.
 
 
-### Start up Acquisition Procedure 
+### Start-up Acquisition Procedure 
 
 1. Configure an Ethernet router to operate in 192.168.0.nnn
 2. Power up the AUV
@@ -64,6 +64,19 @@ Once DAR is connected the button Recording becomes active. Press it and the Reco
 when the recording is started, see the message in the textbox "Recording Started", the software DAR_TEST can be switched off,
 the cable removed, the AUV carefully closed and deployed. 
 The acquisition keeps up continuously until it is stopped using DAR_TEST or there is room on the disk.
+
+## Download data
+Data download is managed by DAR_TEST
+
+Once the acquisition is stopped, the user can download data. To start the procedure press the button Download. 
+![sketch](/RES/IMG_04.png) 
+
+In the dialog make sure to have the checkbox DO_RAW checked. Set the wanted folder and define the base for filenames.
+
+Press START butto.
+
+All sequences existing on the disk will be downloaded. Corresponding RAW files will be created.
+Process the RAW files with DAR_TOOLKIT.
 
    
 
