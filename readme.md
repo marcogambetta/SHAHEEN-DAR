@@ -25,5 +25,9 @@ SEGY_trace_samples = 5000
 
 Sensor scalars are defined for the specific sensors mounted on the shaheens. Altering/replacing the sensor requires scalar adjustment
 
+#HOW TO START ACQUISITION
+
+Data acquisition is managed by DAR_TEST software, created by SBGS [SeaBed GeoSolutions]. This company winded off in 2018, thus there is no support available for their products.
+
 
 
