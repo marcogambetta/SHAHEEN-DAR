@@ -39,11 +39,11 @@ DAR_TEST suite is available for download within this repository [DAR_TEST Suite]
 4. Connect the router to a Windows-based PC.
 5. Start DAR_TEST
 6. Provide IP and PORT (56789) of the wired unit. Normally AUV IP is visible from the router web page (preferable), or it can be scanned using DAR_TEST.
-7. press the CONNECT button
+7. press the Connect DAR button
 
 ![sketch](/RES/IMG_01.png)
 
-
+Once DAR is connected the 
 
 
 
