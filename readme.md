@@ -43,7 +43,22 @@ DAR_TEST suite is available for download within this repository [DAR_TEST Suite]
 
 ![sketch](/RES/IMG_01.png)
 
-Once DAR is connected the 
+Once DAR is connected the button Recording becomes active. Press it and the Recording Sequence Dialog pops up.
+
+1. set the sampling rate
+2. set the gain for geophones
+3. set the gain for hydrophone
+4. set the phase filter (Minimum phase)
+5. check that channels 0 to 4 are enabled
+6. fill the comment text box with gain values and other information you may want to store
+7. TIME SYNC
+   _ If DAR is synchronized with GPS just press SET TIME
+   _ If GPS Sync is not available then check the checkbox Use CPU Time
+8. press Start Recording   
+
+   
+
+
 
 
 
