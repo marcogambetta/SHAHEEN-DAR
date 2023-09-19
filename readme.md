@@ -51,14 +51,9 @@ Once DAR is connected the button Recording becomes active. Press it and the Reco
 4. set the phase filter (Minimum phase)
 5. check that channels 0 to 4 are enabled
 6. fill the comment text box with gain values and other information you may want to store
-
-7. First list item
+7. Time synchronization
    - If DAR is synchronized with GPS just press SET TIME
    - If GPS Sync is not available then check the checkbox Use CPU Time
-
-7. TIME SYNC
-   _ If DAR is synchronized with GPS just press SET TIME
-   _ If GPS Sync is not available then check the checkbox Use CPU Time
 8. press Start Recording   
 
    
