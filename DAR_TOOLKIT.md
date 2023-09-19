@@ -113,3 +113,19 @@ Channel3_ADC  2001000.0                  104977.868195           -5174348.0     
 Note that seismic data are not corrected by time skew, while the time drift coefficiente, if available, are recorded as attributes. Also Scalars and gains are stored as attributes.
 
 Channels' physical meaning is defined in the corresponding attribute *channels*
+
+## Convert RAW data to CSV(z)
+
+The script provides the feature of encoding the data in plain textual format. This feature is intended mainly for small samples to ease data maniplation with custom software (i.e MatLab).
+
+It is not advisable to ASCII encode large database becasue the resulting output will be huge. Data and attributes are encoded in different files.
+Here follows a listing of RAW and corresponding ASCII encoded files.
+
+```
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+la---          31/08/2021    15:45           3128 03-50-05.gtd2
+la---          26/05/2021    14:57       24093092 03-AUV-1khz-gain32-50THR-3_5m.raw
+la---          19/09/2023    14:35           2784 03-AUV-1khz-gain32-50THR-3_5m.raw.1149_Attributes.csv
+-a---          19/09/2023    14:35      615560542 03-AUV-1khz-gain32-50THR-3_5m.raw.1149.csv
+```
