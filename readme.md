@@ -78,6 +78,10 @@ Press START button.
 All sequences existing on the disk will be downloaded. Corresponding RAW files will be created.
 Process the RAW files with DAR_TOOLKIT.
 
+# WHAT DO NEXT
+
+1. to know how to manipulate RAW file, refers to [DAR_TOOLKI USER MANUAL](DAR_TOOLKIT_UserManual.md)
+2. to know how to create a SEGY from a RAW file refers to [SEGY_CREATION_GUIDE](SEGY_CREATION_Guide.md)
    
 
 
