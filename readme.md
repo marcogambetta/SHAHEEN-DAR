@@ -29,5 +29,9 @@ Sensor scalars are defined for the specific sensors mounted on the shaheens. Alt
 
 Data acquisition is managed by DAR_TEST software, created by SBGS [SeaBed GeoSolutions]. This company winded off in 2018, thus there is no support available for their products.
 
+DAR_TEST suite is available for download within this repository [DAR_TEST Suite](RES\205-DAR_SOFTWARE.zip)
+
+
+
 
 
