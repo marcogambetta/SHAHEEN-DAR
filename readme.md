@@ -29,7 +29,20 @@ Sensor scalars are defined for the specific sensors mounted on the shaheens. Alt
 
 Data acquisition is managed by DAR_TEST software, created by SBGS [SeaBed GeoSolutions]. This company winded off in 2018, thus there is no support available for their products.
 
-DAR_TEST suite is available for download within this repository [DAR_TEST Suite](RES\205-DAR_SOFTWARE.zip)
+DAR_TEST suite is available for download within this repository [DAR_TEST Suite](RES\205-DAR_SOFTWARE.zip). DAR_TEST documentation from the author is included in the archive.
+
+##Start up Acquisition Procedure 
+
+1. Configure an Ethernet router to operate in 192.168.0.nnn
+2. Power up the AUV
+3. Connect the AUV to a router (DHCP) using the provided ethernet cable, plugged into the recharge/data socket, located in the AUV tail.
+4. Connect the router to a Windows-based PC.
+5. Start DAR_TEST
+6. Provide IP and PORT (56789) of the wired unit. Normally AUV IP is visible from the router web page (preferable), or it can be scanned using DAR_TEST.
+7. press the CONNECT button
+
+![sketch](/RES/IMG_01.png)
+
 
 
 
