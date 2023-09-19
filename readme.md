@@ -1,5 +1,5 @@
 # SHAHEEN DAR
-This repository contains the code needed to extract and interpret DAR raw data and create output
+This repository contains the code needed to extract and interpret DAR raw data[^1] and create output
 in several different formats including SEGY
 
 ## General data flow scheme
@@ -9,6 +9,7 @@ Using the provided tool DART_TEST (Windows) it is possible to interpret and down
 
 ![sketch](/RES/IMG_00.png)
 
+[^1]: Format description is provided in [DAR RAW FILE FORMAT SPECS(DOCUMENTATION/DAR RAW FILE FORMAT SPECS.pdf)
 
 ### Configuration file
 The configuration file is used by the app to convert ADC  to physical data, to set gain[^1], and to define the way the SEGY data is created
