@@ -57,7 +57,13 @@ Once DAR is connected the button Recording becomes active. Press it and the Reco
 7. Time synchronization
    - If DAR is synchronized with GPS just press SET TIME
    - If GPS Sync is not available then check the checkbox Use CPU Time
-8. press Start Recording   
+8. press Start Recording
+
+![sketch](/RES/IMG_03.png) 
+
+when the recording is started, see the message in the textbox "Recording Started", the software DAR_TEST can be switched off,
+the cable removed, the AUV carefully closed and deployed. 
+The acquisition keeps up continuously until it is stopped using DAR_TEST or there is room on the disk.
 
    
 
