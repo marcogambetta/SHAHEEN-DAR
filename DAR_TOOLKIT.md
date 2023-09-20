@@ -193,6 +193,8 @@ the whole command line to get XLS output is something like this:
 python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.INI -t xls -i "2021-05-26 12:40:00 to 2021-05-26 12:40:10"
 
 ```
+the  ``` -i ``` activates a specific report. The newly created filename has the datetime range appended in the name. Attributes file is also dumped as plain text
+```
 
 
                        Source filename : .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather
