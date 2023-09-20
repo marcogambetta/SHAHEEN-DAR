@@ -36,9 +36,17 @@ The task is to extract all the _shots_ from the stream
 The figure above shows one (random) shot taken from the ensemble shown before. Now, with an enlarged horizontal scale, the burst of energy recorded by the system appears as a dumped wave.
 The horizontal axis is the time axis, unit is the second.
 
-Let's assume that the energy was released at a given time, for the sake of the discussion, say equal to 36. 
-The burst of energy starts at 39.651. this is called _first break_ The difference between the time when energy was released and the first break, that is the time when the energy is  recorded is 3.651 seconds. 
+Let's assume that the energy was released at a given time, for the sake of the discussion, say equal to 36.000 seconds. 
+The burst of energy starts at 39.651 seconds; this exact time is called _first break_
+
+The difference between the time when energy was released and the _first break_, that is the time when the energy is recorded by the recording system on the AUV, is 3.651 seconds. 
+
 This means the distance between the source and the receiver is 3.651 s times 1500 m/s = 5.476,5 m, assuming 1500 m/s is a typical value for sound speed in seawater.
+
+We need to know when the _first break_ occurs to have a starting point to extract the data from the stream. 
+
+Using **navigation and localization data** together with **shot data** it is possible to compute the 3D Euclidean distance between the source and the receive. Knowing the distance and the sound speed in seawater the travel time can be computed. Adding the travel time to the actual shooting time the _first break_ is known.
+
 
 
    
