@@ -155,14 +155,16 @@ These two commands instruct the script, first, to serialize a _.raw_ data file (
 
 ## Convert RAW data to CSV(z), XLS
 
-The script provides the feature of encoding the data in plain textual format. This feature is intended mainly for small samples to ease data manipulation with custom software (i.e. MatLab).
+The script provides the feature of encoding the data in plain textual format and MS Excel format. This feature is intended mainly for small samples to ease data manipulation with custom software (i.e. MatLab).
+
+Conversion format is controlled using either  ``` csv, CSVZ, XLS ``` keywords as show below. ``` CSVZ ``` provides a gzipped CSV.
 
 ```
 python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t csv
 python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t csvZ
 python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t XLS
 ```
-By using   ```-t csvz``` the ASCII-encoded data is gzipped to save disk.
+
 
 It is not advisable to ASCII encode large databases because the resulting output will be huge. Data and attributes are encoded in different files.
 Here is a listing of RAW and corresponding ASCII-encoded files of 2 001 000 records.
