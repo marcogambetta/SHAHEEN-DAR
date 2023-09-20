@@ -22,4 +22,11 @@ Every single source must have the same _**time axis**_. The _time axis_ **must b
 
 Synchronization must have higher accuracy than the actual fastest sampling rate. Normally seismic sensors (Hydrophones and Geophones) are sampled at 1 kHz. this means that the _time axis must be syncronized_ with accuracy not less than half a millisecond. Marginally an accuracy equal to the fastest sampling rate can be accepted.
 
+##Sensor Data
+Sensor data are recorded by DAR and organized in a database using DAR_TOOLIK. The collected data is a time stream: samples are collected in sequence, one after the other, from the start to te end of the recording.
+
+![sketch](/RES/IMG_06.png)
+
+The figure above shows an excerpt of one channel (i.e. the hydrophone) of the data stream. In this excerpt, some energy is recorded.
+
    
