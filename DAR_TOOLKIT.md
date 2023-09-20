@@ -114,29 +114,6 @@ Note that seismic data are not corrected by time skew, while the time drift coef
 
 Channels' physical meaning is defined in the corresponding attribute *channels*
 
-## Convert RAW data to CSV(z)
-
-The script provides the feature of encoding the data in plain textual format. This feature is intended mainly for small samples to ease data manipulation with custom software (i.e. MatLab).
-
-```
-python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t csv
-```
-
-
-It is not advisable to ASCII encode large databases because the resulting output will be huge. Data and attributes are encoded in different files.
-Here is a listing of RAW and corresponding ASCII-encoded files of 2 001 000 records.
-By using   ```-t csvz``` the ASCII-encoded data is gzipped to save disk.
- 
-```
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-la---          26/05/2021    14:57       24093092 03-AUV-1khz-gain32-50THR-3_5m.raw
-la---          19/09/2023    14:46           2784 03-AUV-1khz-gain32-50THR-3_5m.raw.1149_Attributes.csv
-la---          19/09/2023    14:35      615560542 03-AUV-1khz-gain32-50THR-3_5m.raw.1149.csv
--a---          19/09/2023    14:46      190215807 03-AUV-1khz-gain32-50THR-3_5m.raw.1149.csv.gz
-```
-Note that DAR serial number is adde to the filename to ease data management when several vehicles are involved.
-
 ## Save RAW data to FEATHER FORMAT
 
 Feather Format is a quick and compact format suited to store large dataframes.
@@ -176,4 +153,63 @@ python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.fea
 ```
 These two commands instruct the script, first, to serialize a _.raw_ data file (as downloaded from the AUV) and save it in _feather format_, and then, to  assimilate the pre-serialised _feather format_ file and show the report
 
+## Convert RAW data to CSV(z), XLS
 
+The script provides the feature of encoding the data in plain textual format. This feature is intended mainly for small samples to ease data manipulation with custom software (i.e. MatLab).
+
+```
+python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t csv
+python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t csvZ
+python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t XLS
+```
+By using   ```-t csvz``` the ASCII-encoded data is gzipped to save disk.
+
+It is not advisable to ASCII encode large databases because the resulting output will be huge. Data and attributes are encoded in different files.
+Here is a listing of RAW and corresponding ASCII-encoded files of 2 001 000 records.
+ 
+```
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+la---          26/05/2021    14:57       24093092 03-AUV-1khz-gain32-50THR-3_5m.raw
+la---          19/09/2023    14:46           2784 03-AUV-1khz-gain32-50THR-3_5m.raw.1149_Attributes.csv
+la---          19/09/2023    14:35      615560542 03-AUV-1khz-gain32-50THR-3_5m.raw.1149.csv
+-a---          19/09/2023    14:46      190215807 03-AUV-1khz-gain32-50THR-3_5m.raw.1149.csv.gz
+```
+Note that DAR serial number is added to the filename to ease data management when several vehicles are involved.
+
+### Datetime range selection 
+Conversion towards textual/xls formats enables the possibility to select a specific datetime range. This is mandatory when the output is XLS beacuse of the limited capabilities of EXCEL to handle large amounts of data.
+
+The option is activated using the option ``` -i ```
+The user must provide initial and final datetime in the strict format described hereafter
+
+```
+-i "<initial datatime> to <finale datetime>"
+where datatime is YYYY-MM-DD hh:mm:ss, the argument must be enclosed in quotation marks
+example : -i "2021-05-26 12:40:00 to 2021-05-26 12:40:10"
+
+the whole command line to get XLS output is something like this: 
+
+python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.INI -t xls -i "2021-05-26 12:40:00 to 2021-05-26 12:40:10"
+
+```
+
+
+                       Source filename : .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather
+                         Output format : xls
+
+                                      Start                           End
+------------------------- ------------------------------ ------------------------------
+            Data Datetime            2021-05-26 12:23:05  2021-05-26 12:56:25.999000064
+           Data Timestamp              1622031785.000000              1622033785.999000
+          Target Datetime            2021-05-26 12:40:00            2021-05-26 12:40:10
+         Target Timestamp              1622025600.000000              1622025610.000000
+           Target indices                        1015000                        1025000
+------------------------- ------------------------------ ------------------------------
+             Total Record 10000
+------------------------- ------------------------------ ------------------------------
+                  Output Data filename : .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather.1149_2021-05-26_12-40-00-to-2021-05-26_12-40-10.xlsx
+            Output Attributes filename : .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather.1149_Attributes.csv
+
+ 
+```
