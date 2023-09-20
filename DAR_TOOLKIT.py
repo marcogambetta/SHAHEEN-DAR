@@ -105,14 +105,58 @@ BYTE	BYTE	DESC
 import argparse
 import feather, pickle
 import pandas as pd
-from DARV import Sequence
+import numpy as np
+from DARV import Sequence,TimestampFromDatetime,DatetimeFromTimestamp
 from GTD import gtd
+from datetime import datetime
 
+class localSequence:
+    def __init__(self):
+        self.Dataframe= None
+        self.Attributes= None
+
+def getDFrange(timerange):
+    try:
+        interval_dt_start = timerange.split(' to ')[0]
+        interval_dt_end = timerange.split(' to ')[1]
+        interval_ts_start = TimestampFromDatetime(interval_dt_start)+3600
+        interval_ts_end = TimestampFromDatetime(interval_dt_end)+3600
+
+        print("{0:25s} {1:^30s} {2:^30s}".format('', 'Start', 'End'))
+        print("{0:25s} {1:>30s} {2:>30s}".format('-' * 25, '-' * 30, '-' * 30))
+
+        print("{0:>25s} {1:>30s} {2:>30s}".format('Data Datetime', str(Sqx.Dataframe['Datetime'].iloc[0]),
+                                                  str(Sqx.Dataframe['Datetime'].iloc[-1])))
+        print("{0:>25s} {1:>30s} {2:>30s}".format('Target Datetime', interval_dt_start, interval_dt_end))
+
+        dtobj = datetime.strptime(interval_dt_end, '%Y-%m-%d %H:%M:%S')
+        if  dtobj >  Sqx.Dataframe['Datetime'].iloc[-1] :   raise Exception('End timestamp not included in data range')
+        dtobj = datetime.strptime(interval_dt_start, '%Y-%m-%d %H:%M:%S')
+        if  dtobj <  Sqx.Dataframe['Datetime'].iloc[0] :   raise Exception('Start timestamp not included in data range')
+
+        idx_start = np.where(Sqx.Dataframe['Datetime'] <= interval_dt_start)[0][-1]
+        idx_end = np.where(Sqx.Dataframe['Datetime'] >= interval_dt_end)[0][0]
+
+        chk = idx_end-idx_start
+        if chk == 0 : raise Exception('Null Range')
+        if chk <= 0 : raise Exception('Negative Range')
+
+        print("{0:>25s} {1:>30d} {2:>30d}".format('Target indices', idx_start, idx_end))
+        print("{0:25s} {1:>30s} {2:>30s}".format('-' * 25, '-' * 30, '-' * 30))
+        print("{0:>25s} {1:<30d} {2:>30s}".format('Total Record', idx_end - idx_start, ' '))
+        print("{0:25s} {1:>30s} {2:>30s}".format('-' * 25, '-' * 30, '-' * 30))
+        index_rng = list(range(idx_start, idx_end))
+
+        return index_rng, str(interval_dt_start),str(interval_dt_end)
+    except Exception as e:
+        print ('\n Fatal Exception : ',e)
+        print (' Check input formats and consistency with the input time boundaries.')
+        print (' Execute a run using "-t vu"  and inspect the output of the seismic data summary for channels Datetime and Timestamp\n\n.')
+        quit()
 
 def showAttibutes(d):
     outs = '\n'
     for k in sorted(d.keys()):
-        # noinspection PyBroadException
         v = Sqx.Attributes[k]
         try:
             if type(v) is int:
@@ -136,53 +180,69 @@ parser.add_argument("-f", type=str, help="Input Filename - DAR RAW fileformat",r
 parser.add_argument("-c", type=str, help="Configuration file ",required = True)
 parser.add_argument("-g", type=str, help="Geometry file ",required = False)
 parser.add_argument("-t", type=str, help="Output type [CSV(Z), FTH, PKL, VU]",default='FTH')
+parser.add_argument("-i", type=str, help="time interval for XLS and CSV output")
+
 args = parser.parse_args()
-
-
-
 
 print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Source filename', args.f))
 print('\t{0:>30s} : {1:<50s}\n'.format('Output format', args.t))
 
+#parse input file extension
+ext = args.f[-3::]
+if ext == 'raw':
+      #Assimilate data from RAW datafile
+       Sqx = Sequence(filename=args.f)
 
-#Assimilate data from RAW datafile
-Sqx = Sequence(filename=args.f)
+       #assimilate configuration
+       with open(args.c, 'r') as f:
+           content = f.readlines()
+       Config = {}
+       for e in content:
+           k = e.strip().replace(' ', '').split('=')
+           if k[0] in ['geophone_scalar', 'hydrophone_scalar']:
+               Config[k[0]] = float(k[1])
+           elif k[0] in ['geophone_gain', 'hydrophone_gain']:
+               Config[k[0]] = int(k[1])
+           else:
+               Config[k[0]] = k[1]
 
-#assimilate configuration
-with open(args.c, 'r') as f:
-    content = f.readlines()
-Config = {}
-for e in content:
-    k = e.strip().replace(' ', '').split('=')
-    if k[0] in ['geophone_scalar', 'hydrophone_scalar']:
-        Config[k[0]] = float(k[1])
-    elif k[0] in ['geophone_gain', 'hydrophone_gain']:
-        Config[k[0]] = int(k[1])
-    else:
-        Config[k[0]] = k[1]
+       #stores sclars in Attributes and converts seismic data to phyical units.
+       Sqx.Attributes['geophone_scalar'] = Config['geophone_scalar']
+       Sqx.Attributes['hydrophone_scalar'] = Config['hydrophone_scalar']
+       Sqx.Attributes['geophone_gain'] = Config['geophone_gain']
+       Sqx.Attributes['hydrophone_gain'] = Config['hydrophone_gain']
+       Sqx.Attributes['geophone_units'] = 'mm/s'
+       Sqx.Attributes['hydrophone_units'] = 'microbar'
+       Sqx.Attributes['channels'] = '0:Inline Geophone, 1: Crossline Geophone, 2: Vertical Geophone, 3 : Hydrophone'
+       Sqx.Dataframe['Channel0_ADC'] = Sqx.Dataframe["Channel0"]
+       Sqx.Dataframe['Channel1_ADC'] = Sqx.Dataframe["Channel1"]
+       Sqx.Dataframe['Channel2_ADC'] = Sqx.Dataframe["Channel2"]
+       Sqx.Dataframe['Channel3_ADC'] = Sqx.Dataframe["Channel3"]
+       Sqx.Dataframe["Channel0"] = 1000 * Config['geophone_scalar'] * Sqx.Dataframe['Channel0_ADC'] / Config['geophone_gain']
+       Sqx.Dataframe["Channel1"] = 1000 * Config['geophone_scalar'] * Sqx.Dataframe['Channel1_ADC'] / Config['geophone_gain']
+       Sqx.Dataframe["Channel2"] = 1000 * Config['geophone_scalar'] * Sqx.Dataframe['Channel2_ADC'] / Config['geophone_gain']
+       Sqx.Dataframe["Channel3"] = 1000000 * Config['hydrophone_scalar'] * Sqx.Dataframe['Channel3_ADC'] / Config['hydrophone_gain']
+       del content
+       del f
 
-#stores sclars in Attributes and converts seismic data to phyical units.
-Sqx.Attributes['geophone_scalar'] = Config['geophone_scalar']
-Sqx.Attributes['hydrophone_scalar'] = Config['hydrophone_scalar']
-Sqx.Attributes['geophone_gain'] = Config['geophone_gain']
-Sqx.Attributes['hydrophone_gain'] = Config['hydrophone_gain']
-Sqx.Attributes['geophone_units'] = 'mm/s'
-Sqx.Attributes['hydrophone_units'] = 'microbar'
-Sqx.Attributes['channels'] = '0:Inline Geophone, 1: Crossline Geophone, 2: Vertical Geophone, 3 : Hydrophone'
-Sqx.Dataframe['Channel0_ADC'] = Sqx.Dataframe["Channel0"]
-Sqx.Dataframe['Channel1_ADC'] = Sqx.Dataframe["Channel1"]
-Sqx.Dataframe['Channel2_ADC'] = Sqx.Dataframe["Channel2"]
-Sqx.Dataframe['Channel3_ADC'] = Sqx.Dataframe["Channel3"]
-Sqx.Dataframe["Channel0"] = 1000 * Config['geophone_scalar'] * Sqx.Dataframe['Channel0_ADC'] / Config['geophone_gain']
-Sqx.Dataframe["Channel1"] = 1000 * Config['geophone_scalar'] * Sqx.Dataframe['Channel1_ADC'] / Config['geophone_gain']
-Sqx.Dataframe["Channel2"] = 1000 * Config['geophone_scalar'] * Sqx.Dataframe['Channel2_ADC'] / Config['geophone_gain']
-Sqx.Dataframe["Channel3"] = 1000000 * Config['hydrophone_scalar'] * Sqx.Dataframe['Channel3_ADC'] / Config['hydrophone_gain']
-del content
-del f
-
-
+elif ext == 'her':
+    with open(args.f, 'rb') as f:
+        Sqx = localSequence()
+        Sqx.Dataframe = feather.read_dataframe(f)
+    k = args.f.split('.raw.')
+    file_title = k[0]
+    boardID = k[1].split('.')[0]
+    try:
+        with open(file_title+'.raw.Attributes.'+boardID+'.pkl', 'rb') as f:
+             outdict= pickle.load(f)
+        Sqx.Attributes = outdict['Attributes']
+    except Exception as e:
+        print ('Fatal Exception\n\t',e,'\n\n\t Possible alteration of file names. Both feather format and Attributes dictionary are required.')
+        print ('\n\t Feather format file name : <custom prefix>.raw.<4 digits Board ID>.feather')
+        print('\t     Attributes file name : <custom prefix>.raw.Attributes.<4 digits Board ID>.pkl\n')
+        quit()
 #output
-if args.t == 'SEGY':
+if args.t.upper() == 'SEGY':
     try:
         from SEGY import segy
         #Assimilate Geometry
@@ -196,14 +256,21 @@ if args.t == 'SEGY':
         print ('Failed to execute because : ' + str(e))
 
 
-if args.t == 'FHT':
+if args.t.upper() == 'FTH':
     #Assimilate Geometry
-    Geometry = gtd(filename = args.g, seismic_timestamp= Sqx.Dataframe['Timestamp'])
+    try:
+       Geometry = gtd(filename = args.g, seismic_timestamp= Sqx.Dataframe['Timestamp'])
+    except Exception as e:
+        print (e)
     fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number']) + '.feather'
     feather.write_dataframe(Sqx.Dataframe, fo)
     print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Output filename', fo))
+    outdict = {'Attributes': Sqx.Attributes,
+               'Source_filename': Sqx.FileName}
+    fo = args.f + '.Attributes.' + str(Sqx.Attributes['Board Serial Number']) + '.pkl'
+    pickle.dump(outdict, file=open(fo, "wb"))
 
-if args.t == 'PKL':
+if args.t.upper() == 'PKL':
      #Assimilate Geometry
      Geometry = gtd(filename = args.g, seismic_timestamp= Sqx.Dataframe['Timestamp'])
      outdict = {'AUXchannels': Sqx.AUXchannels,
@@ -215,44 +282,43 @@ if args.t == 'PKL':
      pickle.dump(outdict, file=open(fo, "wb"))
      print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Output filename', fo))
 
-if args.t == 'CSVZ':
+if args.t.upper() in  ['CSV','CSVZ','XLS']:
      # data
-     print("Encoding dataframe to Gzipped CSV                                            ", end="\r", flush=True)
-     fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number']) + '.csv.gz'
-     Sqx.Dataframe.to_csv(fo, sep=';', header=True, index=False, chunksize=100000, compression='gzip',encoding='utf-8')
-     print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Output Data filename', fo))
-     # attributes
-     fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number']) + '_Attributes.csv'
-     s = fo + '\n'
-     s += showAttibutes(Sqx.Attributes)
-     with open(fo, 'w') as f:
-         f.write(s[::-1])
-     print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Output Attributes filename', fo))
+     print("Encoding dataframe to CSV/CSVZ/XLS                                         ", end="\r", flush=True)
+     if args.i is not None:
+        index_rng, dt_start, dr_end = getDFrange(args.i )
+        outDF = Sqx.Dataframe.take(index_rng)
+        fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number']) +'_'+ dt_start.replace(' ','_').replace(':','-')+ '-to-'+dr_end.replace(' ','_').replace(':','-')
+     else:
+        outDF = Sqx.Dataframe
+        fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number'])
 
-if args.t == 'CSV':
-     # data
-     print("Encoding dataframe to CSV                                             ", end="\r", flush=True)
-     fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number']) + '.csv'
-     Sqx.Dataframe.to_csv(fo, sep=';', header=True, index=False, chunksize=100000, encoding='utf-8')
-     print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Output Data filename', fo))
+     if args.t.upper()  == 'CSV' :
+        fo += '.csv'
+        outDF.to_csv(fo, sep=';', header=True, index=False, chunksize=100000, encoding='utf-8')
+     elif args.t.upper() == 'CSVZ':
+         fo += '.csv.gz'
+         outDF.to_csv(fo, sep=';', header=True, index=False, chunksize=100000, compression='gzip',encoding='utf-8')
+     elif args.t.upper() == 'XLS':
+         fo += '.xlsx'
+         outDF.to_excel(fo)
+
+     print('\t{0:>30s} : {1:<50s}'.format('Output Data filename', fo))
      # attributes
      fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number']) + '_Attributes.csv'
      s = fo + '\n'
      s += showAttibutes(Sqx.Attributes)
      with open(fo, 'w') as f:
          f.write(s)
-     print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Output Attributes filename', fo))
+     print('\t{0:>30s} : {1:<50s}'.format('Output Attributes filename', fo))
 
-if args.t == 'XLS':
-     # data
-     print("Encoding dataframe to XLS                                             ", end="\r", flush=True)
-     fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number']) + '.xlsx'
-     Sqx.Dataframe.to_excel(fo)
-     print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Output Data filename', fo))
 
-if args.t == 'VU':
+if args.t.upper() == 'VU':
          #Assimilate Geometry
-     Geometry = gtd(filename = args.g, seismic_timestamp= Sqx.Dataframe['Timestamp'])
      print ('\n','-'*120,'\n\tSEISMIC DATABASE\n','-'*120,'\n',Sqx.Dataframe.describe().T,'\n')
      print ('\n','-'*120,'\n\tSEISMIC ATTRIBUTES\n','-'*120,'\n',showAttibutes(Sqx.Attributes),'\n')
-     print ('\n','-'*120,'\n\tGEOMETRY\n','-'*120,'\n',Geometry.Dataframe.head(),'\n'*2,Geometry.Dataframe.tail(),'\n')
+     try:
+         Geometry = gtd(filename=args.g, seismic_timestamp=Sqx.Dataframe['Timestamp'])
+         print ('\n','-'*120,'\n\tGEOMETRY\n','-'*120,'\n',Geometry.Dataframe.head(),'\n'*2,Geometry.Dataframe.tail(),'\n')
+     except:
+         pass
