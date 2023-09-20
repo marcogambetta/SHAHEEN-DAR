@@ -22,11 +22,14 @@ Every single source must have the same _**time axis**_. The _time axis_ **must b
 
 Synchronization must have higher accuracy than the actual fastest sampling rate. Normally seismic sensors (Hydrophones and Geophones) are sampled at 1 kHz. this means that the _time axis must be syncronized_ with accuracy not less than half a millisecond. Marginally an accuracy equal to the fastest sampling rate can be accepted.
 
-##Sensor Data
-Sensor data are recorded by DAR and organized in a database using DAR_TOOLIK. The collected data is a time stream: samples are collected in sequence, one after the other, from the start to te end of the recording.
+## Sensor Data
+Sensor data are recorded by DAR and organized in a database using DAR_TOOLIK. The collected data is a time stream: samples are collected in sequence, one after the other, from the start to the end of the recording.
 
 ![sketch](/RES/IMG_06.png)
 
-The figure above shows an excerpt of one channel (i.e. the hydrophone) of the data stream. In this excerpt, some energy is recorded.
+The figure above shows an excerpt of one channel (i.e. the hydrophone) of the data stream. In this excerpt, some energy is recorded. This is the energy that propagates from a source point through the seawater and reaches the sensor. To create a seismic trace it is necessary to know the time of the explosion (release of the energy) and the reciprocal position of the source and the receiver.
+
+Knowing the reciprocal position of source and receiver the Euclidean distance is known and thus the travel time of the direct wave, assuming the sound speed in seawater is constant. this information is also used to independently check the accuracy of the positioning system. Knowing the travel time the wanted signal can be uniquely identified in time.
+
 
    
