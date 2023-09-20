@@ -164,9 +164,16 @@ it is advisable to _serialize_ the original _RAW_ file into a _Feather format_ p
 
 Nevertheless, please note that _Feather format_, despite being quick and efficient is **not intended for long-term data storage**, thus it is safe to archive the _raw_ data as well,
 
-## Read Feather Foramt data 
+## Read Feather Format data 
 DAR_TOOLKIT is sensitive to input file extension.
-1. _.raw_ : activates the serialization procedure of the datafile downloaded from the AUV
-2. _.feather_ : activates the assimilation of pre-serialized data  saved in _feather format_ as described in the section above.
-3. 
+1. :  _.raw_ : activates the serialization procedure of the datafile downloaded from the AUV
+2. :  _.feather_ : activates the assimilation of pre-serialized data  saved in _feather format_ as described in the section above.
+
+example
+```
+python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t fth
+python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.INI -t vu
+```
+These two commands instruct the script, first, to serialize a _.raw_ data file (as downloaded from the AUV) and save it in _feather format_, and then, to  assimilate the pre-serialised _feather format_ file and show the report
+
 
