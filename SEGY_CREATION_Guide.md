@@ -31,5 +31,7 @@ The figure above shows an excerpt of one channel (i.e. the hydrophone) of the da
 
 Knowing the reciprocal position of source and receiver the Euclidean distance is known and thus the travel time of the direct wave, assuming the sound speed in seawater is constant. this information is also used to independently check the accuracy of the positioning system. Knowing the travel time the wanted signal can be uniquely identified in time.
 
+A convenient delay, an amount of time _before_ the actual shot, is defined, and similarly, a convenient time duration to encompass the whole energy recorded by the sensor is defined. This information is used to excerpt the data from the stream of data and create the SEGY data body. This is applied to all channels recorded by the recording device.
+
 
    
