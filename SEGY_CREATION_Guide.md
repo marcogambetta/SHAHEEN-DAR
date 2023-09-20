@@ -8,3 +8,14 @@ Bare sensor recordings are nearly useless to the seismic industry because the de
 
 Simplified SEGY creation procedure
 ![sketch](/RES/IMG_05.png)
+
+Data needed to create a SEGY comes from **three different sources** : 
+1. sensor data
+2. AUV positioning data
+3. source (airgun) positioning data
+
+Every single source must have the same _**time axis**_. The _time axis_ **must be carefully synchronized**
+
+Synchronization must have higher accuracy than the actual fastest sampling rate. Normally seismic sensors (Hydrophones and Geophones) are sampled at 1 kHz. this means that the _time axis must be syncronized_ with accuracy not less than half a millisecond.
+
+   
