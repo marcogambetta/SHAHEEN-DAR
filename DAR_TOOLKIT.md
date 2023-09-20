@@ -1,31 +1,33 @@
 # DAR_TOOLIT User Manual
 
-DAR_TOOLKIT is a command line pure python script intended to manipulate DAR RAW data, as donwloaded from the acquisition unit
+DAR_TOOLKIT is a command line pure ```python``` script intended to manipulate DAR RAW data, as downloaded from the acquisition unit
 
-## Dependedncies
+## Dependencies
 DAR_TOOLKIT depends on the availability of the following packages
 
 ```
 argparse   pip install argparse
 feather    pip install feather-format
 obspy      pip install obspy
+numpy      pip install numpy
+openpyxl   pip install openpyxl
 pandas     pip install pandas
-pickle     Noramlly deployed with Python
+pickle     Normally deployed with Python
 pyproj     pip install pyproj
 simplemkl  pip install simplekml
 ```
 
-Invoke DAR_TOOLKIT wqith the following command to get help
+Invoke DAR_TOOLKIT with the following command to get help
 ```
 python .\DAR_TOOLKIT.py -h
 usage: DAR_TOOLKIT.py [-h] -f F -c C [-g G] [-t T]
 
 options:
   -h, --help  show this help message and exit
-  -f F        Input Filename - DAR RAW fileformat
+  -f F        Input Filename - DAR RAW file format
   -c C        Configuration file
   -g G        Geometry file
-  -t T        Output type [CSV(Z), FTH, PKL, VU]
+  -t T        Output type [CSV(Z), XLS, FTH, PKL, VU], case insensitive
 ```
 
 ## Get a view of what is inside a given RAW file 
@@ -157,7 +159,7 @@ These two commands instruct the script, first, to serialize a _.raw_ data file (
 
 The script provides the feature of encoding the data in plain textual format and MS Excel format. This feature is intended mainly for small samples to ease data manipulation with custom software (i.e. MatLab).
 
-Conversion format is controlled using either  ``` csv, CSVZ, XLS ``` keywords as show below. ``` CSVZ ``` provides a gzipped CSV.
+Conversion format is controlled using either  ``` CSV, CSVZ, XLS ``` keywords as shown below. ``` CSVZ ``` provides a gzipped CSV. 
 
 ```
 python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t csv
@@ -217,3 +219,4 @@ the  ``` -i ``` activates a specific report. The newly created filename has the 
 
  
 ```
+Note that  ``` -i ``` option is useless with other output formats than ``` CSV, CSVZ, XLS ```.
