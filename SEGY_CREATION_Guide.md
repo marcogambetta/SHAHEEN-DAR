@@ -27,7 +27,7 @@ Sensor data are recorded by DAR and organized in a database using DAR_TOOLIK. Th
 
 ![sketch](/RES/IMG_06.png)
 
-The figure above shows an excerpt of one channel (i.e. the hydrophone) of the data stream. In this excerpt, some energy is recorded. This is the energy that propagates from a source point through the seawater and reaches the sensor. To create a seismic trace it is necessary to know the time of the explosion (release of the energy) and the reciprocal position of the source and the receiver.
+The figure above shows an excerpt of one channel (i.e. the hydrophone) of the data stream. In this excerpt, some energy is recorded. This is the energy that propagates from a source point through the seawater and reaches the sensor. To create a seismic trace it is necessary to know the time of the explosion (_**shot epoch**_) and the reciprocal position of the source and the receiver.
 
 Knowing the reciprocal position of source and receiver the Euclidean distance is known and thus the travel time of the direct wave, assuming the sound speed in seawater is constant. this information is also used to independently check the accuracy of the positioning system. Knowing the travel time the wanted signal can be uniquely identified in time.
 
