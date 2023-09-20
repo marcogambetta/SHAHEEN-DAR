@@ -157,3 +157,16 @@ la---          26/05/2021    14:57       24093092 03-AUV-1khz-gain32-50THR-3_5m.
 la---          20/09/2023    10:01      184702786 03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather
 la---          20/09/2023    10:01           1336 03-AUV-1khz-gain32-50THR-3_5m.raw.Attributes.1149.pkl
 ```
+
+**_Best Practice_**
+
+it is advisable to _serialize_ the original _RAW_ file into a _Feather format_ pair of files before running the SEGY creation. Serializing a _raw_ file requires time, while reading _feather format_ is much quicker. Being the SEGY creation procedure prone to tuning, it is better to have a quick input.
+
+Nevertheless, please note that _Feather format_, despite being quick and efficient is **not intended for long-term data storage**, thus it is safe to archive the _raw_ data as well,
+
+## Read Feather Foramt data 
+DAR_TOOLKIT is sensitive to input file extension.
+1. _.raw_ : activates the serialization procedure of the datafile downloaded from the AUV
+2. _.feather_ : activates the assimilation of pre-serialized data  saved in _feather format_ as described in the section above.
+3. 
+
