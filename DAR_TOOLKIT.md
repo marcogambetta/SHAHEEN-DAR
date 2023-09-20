@@ -136,3 +136,24 @@ la---          19/09/2023    14:35      615560542 03-AUV-1khz-gain32-50THR-3_5m.
 -a---          19/09/2023    14:46      190215807 03-AUV-1khz-gain32-50THR-3_5m.raw.1149.csv.gz
 ```
 Note that DAR serial number is adde to the filename to ease data management when several vehicles are involved.
+
+## Save RAW data to FEATHER FORMAT
+
+Feather Format is a quick and compact format suited to store large dataframes.
+
+DAR_TOOLKIT offers the possibility to encode and decode this efficient data exchange format using the ``` -t fth ``` option as shown below.
+```
+python .\DAR_TOOLKIT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw -c .\CONFIG.INI -t fth
+```
+Note that **two** files are created.
+1. a feather format binary data file, which has the same name of the input file, plus the DAR board ID and the extension _.feather_
+2. a pickle format that holds the attributes.
+
+   **both files are needed to recover the original data - do not alter the names**
+```
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+la---          26/05/2021    14:57       24093092 03-AUV-1khz-gain32-50THR-3_5m.raw
+la---          20/09/2023    10:01      184702786 03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather
+la---          20/09/2023    10:01           1336 03-AUV-1khz-gain32-50THR-3_5m.raw.Attributes.1149.pkl
+```
