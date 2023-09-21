@@ -227,5 +227,19 @@ This script is intended to show the signal(s) saved in a Feather-Format archive.
 
 Note that this script requires, on top of other dependencies, ``` matplotlib ```
 
+Invoke STRAMSCOPE with the following command to get help
+```
+python .\STREAM_SCOPE.py -h
+usage: STREAM_SCOPE.py [-h] -f F [-c C] [-i I] [-m M]
+
+options:
+  -h, --help  show this help message and exit
+  -f F        Input Filename - Feather format
+  -c C        Channel, as defined in Attributes, default is 3, Hydrophone
+  -i I        Time interval 
+  -m M        working mode : plot (default), info
+```
+
+
 
 
