@@ -18,12 +18,12 @@ geophone_scalar = 0.000000029017
 hydrophone_scalar = 0.00000029597
 geophone_gain = 8
 hydrophone_gain = 8
-SEGY_samples_before_event =2000
-SEGY_trace_samples = 5000
 ```
 [^2]: there is no way to store gain information in any file when running the acquisition. Gain must be manually written in some configuration. Best Practice is to make a note in the comment box before launching the acquisition with DAT_TEST
 
 Sensor scalars are defined for the specific sensors mounted on the shaheens. Altering/replacing the sensor requires scalar adjustment
+
+Config file has other information intended for processing that will be discussed in the due time, in the proper section of the ```.md``` documents stored in this repository
 
 ## HOW TO START ACQUISITION
 
