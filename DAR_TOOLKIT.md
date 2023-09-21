@@ -220,3 +220,12 @@ the  ``` -i ``` activates a specific report. The newly created filename has the 
  
 ```
 Note that  ``` -i ``` option is useless with other output formats than ``` CSV, CSVZ, XLS ```.
+
+# STREAM_SCOPE
+
+This script is intended to show the signal(s) saved in a Feather-Format archive.
+
+Note that this script requires, on top of other dependencies, ``` matplotlib ```
+
+
+
