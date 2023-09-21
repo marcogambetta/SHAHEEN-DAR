@@ -79,7 +79,7 @@ _Three-dimensional geographical position_  is the geographical position (Longitu
 #0       1         2         3         4         5         6         7         8         9
 #23456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
 H18 PROJECTION TYPE             utm
-H19 PROJECTION ZONE             30U
+H19 PROJECTION ZONE             30
 H999BOARD SERIAL NUMBER         1146
 R        3 001 539356.31 5303810.03  3.0  1000 539405.61 5303788.26  5.0  48.0 1622033224.801 2000
 R        3 002 539356.31 5303810.03  3.0  1000 539401.21 5303794.97  5.0  48.0 1622033232.800 2000
@@ -90,8 +90,8 @@ R        3 006 539356.31 5303810.03  3.0  1000 539383.58 5303821.79  5.0  48.0 1
 ```
 The datum file has a very strict syntax and its encoding is based on position and the user must comply with that.   
 
-THe datum file is composed of a header, immutable, that specifies keyword and its range of positions in the record.
-The count of char is zerobased, this means
+The datum file is composed of a header, immutable, that specifies the keyword and its range of positions in the record.
+The count of char is zero-based, this means
 that the first char is chara number 0, and corresponds to the ```RECORD CODE```
 Each keyword shows two digits: these are the position of the first and the last char that can be used to store the actual value in a record (line).
 
@@ -100,11 +100,21 @@ By using the immutable header, the class ```GDT``` interprets the file:
 i.e.:
 
 ```SHOT Y [NORTHING]``` is stored from char ```26``` to char ```37```, it value, in the case, is ```5303810.03```
-```#SHOT EPOCH``` is stored from char ```80``` to char ```94```, its value, in the case, is ```1622033248.801```, note that ```SHOT EPOCH``` is a float with three decimals and its unit is seconds.
-If the actual value is shorter than the allotted chars, left-align the value and fill the gap with spaces.
 
 ```
 #SHOT Y [NORTHING]         26   37
+#0       1         2         3         4         5         6         7         8         9
+#23456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+
+R        3 004 539356.31 5303810.03  3.0  1000 539392.39 5303808.38  5.0  48.0 1622033248.801 2000
+```
+
+```#SHOT EPOCH``` is stored from char ```80``` to char ```94```, its value, in the case, is ```1622033248.801```, note that ```SHOT EPOCH``` is a float with three decimals and its unit is seconds.
+
+If the actual value is shorter than the allotted chars, left-align the value and fill the gap with spaces.
+
+```
+#SHOT EPOCH                80   94
 #0       1         2         3         4         5         6         7         8         9
 #23456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
 
