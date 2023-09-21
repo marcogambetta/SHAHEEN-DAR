@@ -106,7 +106,7 @@ import argparse
 import feather, pickle
 import pandas as pd
 import numpy as np
-from DARV import Sequence,TimestampFromDatetime,DatetimeFromTimestamp
+from DARV import Sequence,TimestampFromDatetime
 from GTD import gtd
 from datetime import datetime
 
@@ -187,25 +187,33 @@ args = parser.parse_args()
 print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Source filename', args.f))
 print('\t{0:>30s} : {1:<50s}\n'.format('Output format', args.t))
 
+
+#Assimilate Configuration
+with open(args.c, 'r') as f:
+    content = f.readlines()
+Config = {}
+for e in content:
+    k = e.strip().replace(' ', '').split('=')
+    if k[0] in ['geophone_scalar', 'hydrophone_scalar']:
+        Config[k[0]] = float(k[1])
+    elif k[0] in ['geophone_gain', 'hydrophone_gain']:
+        Config[k[0]] = int(k[1])
+    else:
+        Config[k[0]] = k[1]
+del content
+del f
+
+#Initialize Geometry
+if args.g is not None:
+    Geometry = gtd(filename=args.g, config=Config)
+else:
+    Geometry = None
+
 #parse input file extension
 ext = args.f[-3::]
 if ext == 'raw':
-      #Assimilate data from RAW datafile
+       #serialize DAR RAW
        Sqx = Sequence(filename=args.f)
-
-       #assimilate configuration
-       with open(args.c, 'r') as f:
-           content = f.readlines()
-       Config = {}
-       for e in content:
-           k = e.strip().replace(' ', '').split('=')
-           if k[0] in ['geophone_scalar', 'hydrophone_scalar']:
-               Config[k[0]] = float(k[1])
-           elif k[0] in ['geophone_gain', 'hydrophone_gain']:
-               Config[k[0]] = int(k[1])
-           else:
-               Config[k[0]] = k[1]
-
        #stores sclars in Attributes and converts seismic data to phyical units.
        Sqx.Attributes['geophone_scalar'] = Config['geophone_scalar']
        Sqx.Attributes['hydrophone_scalar'] = Config['hydrophone_scalar']
@@ -222,16 +230,16 @@ if ext == 'raw':
        Sqx.Dataframe["Channel1"] = 1000 * Config['geophone_scalar'] * Sqx.Dataframe['Channel1_ADC'] / Config['geophone_gain']
        Sqx.Dataframe["Channel2"] = 1000 * Config['geophone_scalar'] * Sqx.Dataframe['Channel2_ADC'] / Config['geophone_gain']
        Sqx.Dataframe["Channel3"] = 1000000 * Config['hydrophone_scalar'] * Sqx.Dataframe['Channel3_ADC'] / Config['hydrophone_gain']
-       del content
-       del f
 
 elif ext == 'her':
+    #assimilate feather format
     with open(args.f, 'rb') as f:
         Sqx = localSequence()
         Sqx.Dataframe = feather.read_dataframe(f)
     k = args.f.split('.raw.')
     file_title = k[0]
     boardID = k[1].split('.')[0]
+    #assimilate attributes
     try:
         with open(file_title+'.raw.Attributes.'+boardID+'.pkl', 'rb') as f:
              outdict= pickle.load(f)
@@ -241,12 +249,18 @@ elif ext == 'her':
         print ('\n\t Feather format file name : <custom prefix>.raw.<4 digits Board ID>.feather')
         print('\t     Attributes file name : <custom prefix>.raw.Attributes.<4 digits Board ID>.pkl\n')
         quit()
+
+#------------------------------------------------------------------------------------------------------------------------
 #output
+#------------------------------------------------------------------------------------------------------------------------
 if args.t.upper() == 'SEGY':
     try:
         from SEGY import segy
+        # Compute Geometry
+        Geometry.seismic_dataframe = Sqx.Dataframe
+        Geometry.SoundSpeedInWater= Config['Sound_Speed_in_water']
+        Geometry.parse()
         #Assimilate Geometry
-        Geometry = gtd(filename = args.g, seismic_timestamp= Sqx.Dataframe['Timestamp'])
         SGY = segy()
         SGY.set_seismic(Sqx)
         SGY.set_geometry(Geometry)
@@ -255,16 +269,12 @@ if args.t.upper() == 'SEGY':
     except Exception as e: 
         print ('Failed to execute because : ' + str(e))
 
-
 if args.t.upper() == 'FTH':
-    #Assimilate Geometry
-    try:
-       Geometry = gtd(filename = args.g, seismic_timestamp= Sqx.Dataframe['Timestamp'])
-    except Exception as e:
-        print (e)
+    #Output Feather
     fo = args.f + '.' + str(Sqx.Attributes['Board Serial Number']) + '.feather'
     feather.write_dataframe(Sqx.Dataframe, fo)
     print('\n' * 100, '\t{0:>30s} : {1:<50s}'.format('Output filename', fo))
+    # Output Attributes
     outdict = {'Attributes': Sqx.Attributes,
                'Source_filename': Sqx.FileName}
     fo = args.f + '.Attributes.' + str(Sqx.Attributes['Board Serial Number']) + '.pkl'
@@ -272,7 +282,6 @@ if args.t.upper() == 'FTH':
 
 if args.t.upper() == 'PKL':
      #Assimilate Geometry
-     Geometry = gtd(filename = args.g, seismic_timestamp= Sqx.Dataframe['Timestamp'])
      outdict = {'AUXchannels': Sqx.AUXchannels,
                 'Attributes': Sqx.Attributes,
                 'Dataframe': Sqx.Dataframe,
@@ -312,13 +321,11 @@ if args.t.upper() in  ['CSV','CSVZ','XLS']:
          f.write(s)
      print('\t{0:>30s} : {1:<50s}'.format('Output Attributes filename', fo))
 
-
 if args.t.upper() == 'VU':
-         #Assimilate Geometry
      print ('\n','-'*120,'\n\tSEISMIC DATABASE\n','-'*120,'\n',Sqx.Dataframe.describe().T,'\n')
      print ('\n','-'*120,'\n\tSEISMIC ATTRIBUTES\n','-'*120,'\n',showAttibutes(Sqx.Attributes),'\n')
-     try:
-         Geometry = gtd(filename=args.g, seismic_timestamp=Sqx.Dataframe['Timestamp'])
-         print ('\n','-'*120,'\n\tGEOMETRY\n','-'*120,'\n',Geometry.Dataframe.head(),'\n'*2,Geometry.Dataframe.tail(),'\n')
-     except:
-         pass
+     if Geometry is not None:
+         Geometry.seismic_dataframe = Sqx.Dataframe
+         Geometry.SoundSpeedInWater = Config['Sound_Speed_in_water']
+         Geometry.parse()
+         Geometry.show_Dataframe()

@@ -5,15 +5,41 @@ import numpy as np
 import matplotlib.pyplot as plt
 from DARV import Sequence,TimestampFromDatetime,DatetimeFromTimestamp
 from datetime import datetime
+from GTD import gtd
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-f", type=str, help="Input Filename - Feather format",required = True)
-parser.add_argument("-c", type=int, default=3, help="Channel, as defined in Attributes, default is 3, Hydrophone")
+parser.add_argument("-ch", type=int, default=3, help="Channel, as defined in Attributes, default is 3, Hydrophone")
+parser.add_argument("-c", type=str, help="Configuration file ",required = True)
 parser.add_argument("-i", type=str, help="time interval for XLS and CSV output")
 parser.add_argument("-m", type=str, default = 'plot', help="working mode : plot (default), info")
+parser.add_argument("-g", type=str, help="Geometry file ",required = False)
+parser.add_argument("-s", type=int, default = 1480, help="Sound Speed in Water ",required = False)
+
 
 args = parser.parse_args()
+
+#Assimilate Configuration
+with open(args.c, 'r') as f:
+    content = f.readlines()
+Config = {}
+for e in content:
+    k = e.strip().replace(' ', '').split('=')
+    if k[0] in ['geophone_scalar', 'hydrophone_scalar']:
+        Config[k[0]] = float(k[1])
+    elif k[0] in ['geophone_gain', 'hydrophone_gain']:
+        Config[k[0]] = int(k[1])
+    else:
+        Config[k[0]] = k[1]
+del content
+del f
+
+
+if args.g is not None:
+    if args.g is not None:
+        Geometry = gtd(filename=args.g, config=Config)
+
 
 class localSequence:
     def __init__(self):
@@ -107,15 +133,27 @@ if args.m.upper() == 'INFO':
     print('\n', '-' * 120, '\n\tSEISMIC ATTRIBUTES\n', '-' * 120, '\n', showAttibutes(Sqx.Attributes), '\n')
     quit()
 
+
+
 if args.i is not None :
     Sqx.Dataframe = getDFrange(Sqx,args.i)
 
+if args.g is not None:
+    # Compute Geometry
+    Geometry.seismic_dataframe = Sqx.Dataframe
+    Geometry.SoundSpeedInWater = args.s
+    Geometry.parse()
 
 fig, (ax0, ax1) = plt.subplots(2, 1, layout='constrained')
-s = Sqx.Dataframe['Channel'+str(args.c)]
-t =  Sqx.Dataframe['Datetime']
+s = Sqx.Dataframe['Channel'+str(args.ch)]
+t =  Sqx.Dataframe['Timestamp']
 dt = Sqx.Dataframe['Timestamp'].iloc[1]-Sqx.Dataframe['Timestamp'].iloc[0]
-ax0.plot(t, s, label='Channel'+str(args.c) )
+ax0.plot(t, s, label='Channel'+str(args.ch) )
+if args.g is not None:
+    for i,e in enumerate(np.array(Geometry.Dataframe['Expected_FB_Timestamp'])):
+       ax0.axvline(x=e,color='g')
+       ax0.axvline(x=np.array(Geometry.Dataframe['SHOT EPOCH'])[i],color='r')
+
 ax0.set_xlabel('Time (s)')
 ax0.set_ylabel('Signal')
 ax0.legend()

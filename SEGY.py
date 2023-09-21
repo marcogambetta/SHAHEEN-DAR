@@ -32,8 +32,8 @@ class segy:
         print('|{0:^5s}|{1:^8s}|{2:^28s}|{3:^28s}|{4:^28s}|'.format('-'*5,'-'*8, '-'*28, '-'*28, '-'*28))
         print('|{0:^5s}|{1:^8s}|{2:^28s}|{3:^28s}|{4:^28s}|'.format('#','SPNB', 'START DATETIME', 'END DATETIME', 'SHOT DATETIME'))
         print('|{0:^5s}|{1:^8s}|{2:^28s}|{3:^28s}|{4:^28s}|'.format('-'*5,'-'*8, '-'*28, '-'*28, '-'*28))
-        for j, idx in enumerate(map(int,self.geometry.Dataframe['INDEX'])):
-           # print('Adding shot              '+str(j)+' @ '+str(idx) , end="\r", flush=True)
+        for j, idx in enumerate(map(int,self.geometry.Dataframe['Expected_FB_Index'])):
+            print('Adding shot              '+str(j)+' @ '+str(idx) , end="\r", flush=True)
             _ini = idx-self.samples_before_event
             _end = _ini+self.trace_samples
             indices = list(range(_ini, _end))

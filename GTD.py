@@ -1,17 +1,24 @@
+import numpy as np
 import pandas as pd
 
 class gtd:
-    def __init__(self, filename=None, seismic_timestamp= None):
+    def __init__(self, filename=None, seismic_dataframe= None,config=None):
         self.Filename = filename
         self._projection = None
         self._zone = None
         self._data = {}
         self._encoding = {}
-        self._seismictimestamp = seismic_timestamp
+        self.seismic_dataframe = seismic_dataframe
         self.Dataframe = None
-        self._parse()
+        self.SoundSpeedInWater=config['Sound_Speed_in_water']
+        self.ShotEpochShift=config['ShotEpochShift']
 
-    def _parse(self):
+    def show_Dataframe(self):
+        print('\n', '-' * 120, '\n\tGEOMETRY\n', '-' * 120)
+        print (self.Dataframe.head(), '\n' * 2)
+        print (self.Dataframe.tail(), '\n' * 2)
+
+    def parse(self):
         #Read the GDT2 (modified SPS)
         with open(self.Filename , 'r') as f:
             c = f.readlines()
@@ -36,7 +43,6 @@ class gtd:
             e = list(filter(None, v.split(' ')))  # clean the input
             if k[0:2] != '#0':
                 self._encoding[k[1::].rstrip()] = {'ini': e[0], 'end': e[1]}
-        self._encoding['INDEX'] = None
         #Get File content
         for k in self._encoding.keys():
             self._data[k] = []
@@ -47,9 +53,27 @@ class gtd:
                         self._data[j].append(float(e[int(self._encoding[j]['ini']) - 1:int(self._encoding[j]['end'])].lstrip()))
                     elif j in ['SPNB', 'RECEIVER NUMBER', 'LINE NAME']:
                         self._data[j].append(int(e[int(self._encoding[j]['ini']) - 1:int(self._encoding[j]['end'])].lstrip()))
-                    elif j in ['INDEX']:
-                        timestamp = float(self._data['SHOT EPOCH'][-1])
-                        self._data['INDEX'].append((self._seismictimestamp[self._seismictimestamp.ge(timestamp)].index[0]))  # index corresponding to picked event
+                    # elif j in ['INDEX']:
+                    #     timestamp = float(self._data['SHOT EPOCH'][-1])
+                    #     self._data['INDEX'].append((self._seismictimestamp[self._seismictimestamp.ge(timestamp)].index[0]))  # index corresponding to picked event
 
         self._data.pop('RECORD CODE')
         self.Dataframe = pd.DataFrame.from_dict(self._data)
+
+        #compute offset and time of expected first break
+        self.Dataframe['SHOT EPOCH']  = self.Dataframe['SHOT EPOCH']+float(self.ShotEpochShift)
+        self.Dataframe['3D_Offset'] = np.sqrt(np.square(self.Dataframe['SHOT X [EASTING]']-self.Dataframe['RECEIVER X [EASTING]'])+
+                                              np.square(self.Dataframe['SHOT Y [NORTHING]'] - self.Dataframe['RECEIVER Y [NORTHING]']) +
+                                              np.square(self.Dataframe['SHOT Z [DEPTH]'] - self.Dataframe['RECEIVER Z [DEPTH]']))
+        self.Dataframe['DirectWave_Traveltime']= self.Dataframe['3D_Offset'] / float(self.SoundSpeedInWater)
+        self.Dataframe['Expected_FB_Timestamp'] = self.Dataframe['SHOT EPOCH']+self.Dataframe['DirectWave_Traveltime']
+
+        #compute index in seismic dataframe corresponding to the 'Expected_FB_Timestamp'
+        expected_fb_index = []
+        for v in np.array(self.Dataframe['Expected_FB_Timestamp']):
+            expected_fb_index.append(np.where(v<= np.array(self.seismic_dataframe['Timestamp']))[0][0])
+        self.Dataframe['Expected_FB_Index'] =expected_fb_index
+
+
+
+
