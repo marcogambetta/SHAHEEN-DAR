@@ -58,9 +58,12 @@ Geometry information is composed of:
 _Three-dimensional geographical position_  is the geographical position (Longitude, Latitude) projected onto a UTM kilometric grid  [Easting, Northing] including depth data, computed from mean sea level. No tidal correction is applied at this stage.
 
  ## GT DATUM
- A working example of  _GT DATUM_ is in folder DEMODATA of this repository
+ A working example of  _GT DATUM_ is in folder DEMODATA of this repository.
 
- #RECORD CODE                0   1
+ here follows an excerpt
+
+```
+#RECORD CODE                0   1
 #LINE NAME                  2   10
 #SPNB                      11   15
 #SHOT X [EASTING]          16   25
@@ -84,4 +87,5 @@ R        3 003 539356.31 5303810.03  3.0  1000 539396.80 5303801.68  5.0  48.0 1
 R        3 004 539356.31 5303810.03  3.0  1000 539392.39 5303808.38  5.0  48.0 1622033248.801 2000
 R        3 005 539356.31 5303810.03  3.0  1000 539387.98 5303815.09  5.0  48.0 1622033256.802 2000
 R        3 006 539356.31 5303810.03  3.0  1000 539383.58 5303821.79  5.0  48.0 1622033264.802 2000
-   
+```
+The datum file has a very strict syntax and its encoding is based on position and the user must comply with that.   
