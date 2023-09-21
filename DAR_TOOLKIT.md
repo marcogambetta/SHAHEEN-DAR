@@ -246,5 +246,6 @@ Option  ``` -i ``` defines a time window. Only data within the time window will 
 
 The input format and details are described in a previous section of this document: _Datetime range selection_
 
+Option  ``` -m info ``` prevents the chart and provides extensive information on data. This option may work in conjunction with ``` -i ```, in this case only data within the time windows will be analyzed.
 
 
