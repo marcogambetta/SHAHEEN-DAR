@@ -47,6 +47,15 @@ We need to know when the _first break_ occurs to have a starting point to extrac
 
 Using **navigation and localization data** together with **shot data** it is possible to compute the 3D Euclidean distance between the source and the receive. Knowing the distance and the sound speed in seawater the travel time can be computed. Adding the travel time to the actual shooting time the _first break_ is known.
 
+# GEOMETRY
+Geometry information is organized in a textual file, designed after the SPS format.
+
+Geometry information are
+1. AUV positioning data, that is the three-dimensional geographical position of the receiver.
+2. SOURCE positioning data, that is the three-dimensional geographical position of the source, the airgun or other device that creates the pressure wave. In the case of a cluser source, this is the geomerical center of the cluster.
+
+   ** Note**
+ _Three-dimensional geographical position_  is the geographical position (Longitude, Latitude) projected onto a UTM kilometric grid  [Easting, Northing] including depth data, computed from mean sea level. No tidal correction is applied at this stage.
 
 
    
