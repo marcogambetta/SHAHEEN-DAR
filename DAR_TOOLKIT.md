@@ -239,7 +239,12 @@ options:
   -i I        Time interval 
   -m M        working mode : plot (default), info
 ```
+The following picture shows the chart created using the converted RAW file stored in /DEMODATA of this repository
+![sketch](/RES/IMG_09.png)
 
+Option  ``` -i ``` defines a time window. Only data within the time window will be shown.
+
+The input format and details are described in a previous section of this document: _Datetime range selection_
 
 
 
