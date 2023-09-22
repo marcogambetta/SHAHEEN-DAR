@@ -276,10 +276,10 @@ The best practice is to check the consistency of the  _expected first break_ wit
 
 **Colors**
 
-Colors codes are controlled using the option ``` -colors <list of color names ``` as in the example below.
+Colors codes are controlled using the option ``` -colors <list of color names> ```, which is a list of Matplotlib color names, separated by semicolons end enclosed between quotation marks, as in the example below.
 
 ```
-python .\STREAM_SCOPE.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.ini -m plot -g .\DEMODATA\03-50-05.gtd2 -colors "tab:purple;tab:blue;tab:red;tab:olive"
+python .\STREAM_SCOPE.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.ini -colors "tab:purple;tab:blue;tab:red;tab:olive" -m plot -g .\DEMODATA\03-50-05.gtd2 
 
 ```
 A list of suitable color names is available here https://matplotlib.org/stable/gallery/color/named_colors.html
