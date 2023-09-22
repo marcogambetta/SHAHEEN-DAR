@@ -266,7 +266,13 @@ The following pictures show, at increasing scale the output using the ``` -g ```
 ![sketch](/RES/IMG_10b.png)
 ![sketch](/RES/IMG_10c.png)
 
-The vertical lines point to the actual shooting time (```SHOT EPOCH```) and the _expected first break_. The actual data chunk that will be inserted in the SEGY is also highlighted.
+
+The actual data chunk that will be inserted in the SEGY is highlighted (i.e. middle picture where the selected data chunk is colored in orange).
+
+The vertical lines point to the actual shooting time (```SHOT EPOCH```) and the _expected first break_. In the zoomed view ```SHOT EPOCH``` is red and the  _expected first break_ is blue.
+
+The best practice is to check the consistency of the  _expected first break_ with the actual signal. If there is no accurate matching then the source's and/or the receiver's position is biased by some error. Deepening on this is in the  document SEGY_CREATION_Guide.md
+
 
 **colors**
 Colors codes are controlled using the option ``` -colors <list of color names ``` as in the example below.
