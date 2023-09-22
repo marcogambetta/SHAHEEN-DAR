@@ -260,8 +260,23 @@ with this option enabled, the provided _Geometry_ file is processed and its info
 ```
 python .\STREAM_SCOPE.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.ini -m plot -g .\DEMODATA\03-50-05.gtd2
 ```
+The following pictures show, at increasing scale the output using the ``` -g ``` option.
 
+![sketch](/RES/IMG_10a.png)
+![sketch](/RES/IMG_10b.png)
+![sketch](/RES/IMG_10c.png)
 
+The vertical lines point to the actual shooting time (```SHOT EPOCH```) and the _expected first break_. The actual data chunk that will be inserted in the SEGY is also highlighted.
+
+**colors**
+Colors codes are controlled using the option ``` -colors <list of color names ``` as in the example below.
+
+A list of suitable color names is available here https://matplotlib.org/stable/gallery/color/named_colors.html
+
+```
+python .\STREAM_SCOPE.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.ini -m plot -g .\DEMODATA\03-50-05.gtd2 -colors "tab:purple;tab:blue;tab:red;tab:olive"
+
+```
 
 
 
