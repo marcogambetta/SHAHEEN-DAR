@@ -241,13 +241,27 @@ options:
   -m M        working mode : plot (default), info
   -g G        Geometry file
 ```
+
+Option  ``` -m info ``` prevents the chart and provides extensive information on data. This option may work in conjunction with ``` -i ```, in this case only data within the time windows will be analyzed.
+
 The following picture shows the chart created using the converted RAW file stored in /DEMODATA of this repository
+```
+ python .\STREAM_SCOPE.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.ini -m plot
+```
 ![sketch](/RES/IMG_09.png)
 
 Option  ``` -i ``` defines a time window. Only data within the time window will be shown.
 
-The input format and details are described in a previous section of this document: _Datetime range selection_
+The input format and details are described in a previous section of this document: _Datetime range selection
 
-Option  ``` -m info ``` prevents the chart and provides extensive information on data. This option may work in conjunction with ``` -i ```, in this case only data within the time windows will be analyzed.
+Option ``` -g ``` enables Geometry processing.
+
+with this option enabled, the provided _Geometry_ file is processed and its information is shown. Details about the _Geometry_ files are in the document SEGY_CREATION_Guide.md
+```
+python .\STREAM_SCOPE.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.ini -m plot -g .\DEMODATA\03-50-05.gtd2
+```
+
+
+
 
 
