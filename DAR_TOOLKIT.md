@@ -274,15 +274,15 @@ The vertical lines point to the actual shooting time (```SHOT EPOCH```) and the 
 The best practice is to check the consistency of the  _expected first break_ with the actual signal. If there is no accurate matching then the source's and/or the receiver's position is biased by some error. Deepening on this is in the  document SEGY_CREATION_Guide.md
 
 
-**colors**
-Colors codes are controlled using the option ``` -colors <list of color names ``` as in the example below.
+**Colors**
 
-A list of suitable color names is available here https://matplotlib.org/stable/gallery/color/named_colors.html
+Colors codes are controlled using the option ``` -colors <list of color names ``` as in the example below.
 
 ```
 python .\STREAM_SCOPE.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -c .\CONFIG.ini -m plot -g .\DEMODATA\03-50-05.gtd2 -colors "tab:purple;tab:blue;tab:red;tab:olive"
 
 ```
+A list of suitable color names is available here https://matplotlib.org/stable/gallery/color/named_colors.html
 
 
 
