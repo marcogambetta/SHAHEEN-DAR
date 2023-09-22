@@ -233,13 +233,14 @@ python .\STREAM_SCOPE.py -h
 usage: STREAM_SCOPE.py [-h] -f F [-ch CH] -c C [-i I] [-m M] [-g G]
 
 options:
-  -h, --help  show this help message and exit
-  -f F        Input Filename - Feather format
-  -ch CH      Channel, as defined in Attributes, default is 3, Hydrophone
-  -c C        Configuration file
-  -i I        time interval 
-  -m M        working mode : plot (default), info
-  -g G        Geometry file
+  -h, --help      show this help message and exit
+  -f F            Input Filename - Feather format
+  -ch CH          Channel, as defined in Attributes, default is 3, Hydrophone
+  -c C            Configuration file
+  -i I            time interval, details in DAR_TOOLKIT.md
+  -m M            working mode : plot (default), info
+  -g G            Geometry file
+  -colors COLORS  colors of chart elements, details in DAR_TOOLKIT.md, section STREAM_SCOPE
 ```
 
 Option  ``` -m info ``` prevents the chart and provides extensive information on data. This option may work in conjunction with ``` -i ```, in this case only data within the time windows will be analyzed.
@@ -250,9 +251,13 @@ The following picture shows the chart created using the converted RAW file store
 ```
 ![sketch](/RES/IMG_09.png)
 
+### Time slice
+
 Option  ``` -i ``` defines a time window. Only data within the time window will be shown.
 
 The input format and details are described in a previous section of this document: _Datetime range selection
+
+### Geometry
 
 Option ``` -g ``` enables Geometry processing.
 
@@ -274,7 +279,7 @@ The vertical lines point to the actual shooting time (```SHOT EPOCH```) and the 
 The best practice is to check the consistency of the  _expected first break_ with the actual signal. If there is no accurate matching then the source's and/or the receiver's position is biased by some error. Deepening on this is in the  document SEGY_CREATION_Guide.md
 
 
-**Colors**
+### Colors
 
 Colors codes are controlled using the option ``` -colors <list of color names> ```, which is a list of Matplotlib color names, separated by semicolons end enclosed between quotation marks, as in the example below.
 
