@@ -230,14 +230,16 @@ Note that this script requires, on top of other dependencies, ``` matplotlib ```
 Invoke STRAMSCOPE with the following command to get help
 ```
 python .\STREAM_SCOPE.py -h
-usage: STREAM_SCOPE.py [-h] -f F [-c C] [-i I] [-m M]
+usage: STREAM_SCOPE.py [-h] -f F [-ch CH] -c C [-i I] [-m M] [-g G]
 
 options:
   -h, --help  show this help message and exit
   -f F        Input Filename - Feather format
-  -c C        Channel, as defined in Attributes, default is 3, Hydrophone
-  -i I        Time interval 
+  -ch CH      Channel, as defined in Attributes, default is 3, Hydrophone
+  -c C        Configuration file
+  -i I        time interval 
   -m M        working mode : plot (default), info
+  -g G        Geometry file
 ```
 The following picture shows the chart created using the converted RAW file stored in /DEMODATA of this repository
 ![sketch](/RES/IMG_09.png)
