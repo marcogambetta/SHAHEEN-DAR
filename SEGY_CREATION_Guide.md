@@ -197,10 +197,12 @@ Referring to the picture above, ```SHOT_EPOCH``` is marked with the red vertical
 
 
 ## View created SEGY - SEISEE
-A convenient third-part tool to view the newly created SEGY is the software named _SEISEE_, which is available in the RES folder of this repository. SEISEE is a Windows-based application that must be installed.
+A convenient third-party tool to view the newly created SEGY is the software named _SEISEE_, which is available in the RES folder of this repository. SEISEE is a Windows-based application that must be installed.
+
 ---
 The author takes no responsibility for this software and the reader is solely responsible for its installation and use, including all possible damages that may occur to the system used and the data.
 ---
+
 Once created a SEGY can be straightforwardly viewed inside SEIGSEE
 
 ![sketch](/RES/IMG_13.png)
