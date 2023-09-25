@@ -20,7 +20,7 @@ Data needed to create a SEGY comes from **three different sources** :
 
 Every single source must have the same _**time axis**_. The _time axis_ **must be carefully synchronized** among the different devices: DAR, Navigation and localization system, guns' controller
 
-Synchronization must have higher accuracy than the actual fastest sampling rate. Normally seismic sensors (Hydrophones and Geophones) are sampled at 1 kHz. this means that the _time axis must be syncronized_ with accuracy not less than half a millisecond. Marginally an accuracy equal to the fastest sampling rate can be accepted.
+Synchronization must have higher accuracy than the actual fastest sampling rate. Normally seismic sensors (Hydrophones and Geophones) are sampled at 1 kHz. This means that the _time axis must be syncronized_ with accuracy not less than half a millisecond. Marginally an accuracy equal to the fastest sampling rate can be accepted.
 
 ## Sensor Data
 Sensor data are recorded by DAR and organized in a database using DAR_TOOLIK. The collected data is a time stream: samples are collected in sequence, one after the other, from the start to the end of the recording.
@@ -34,18 +34,7 @@ The task is to extract all the _shots_ from the stream
 ![sketch](/RES/IMG_07.png)
 
 The figure above shows one (random) shot taken from the ensemble shown before. Now, with an enlarged horizontal scale, the burst of energy recorded by the system appears as a dumped wave.
-The horizontal axis is the time axis, unit is the second.
-
-Let's assume that the energy was released at a given time, for the sake of the discussion, say equal to 36.000 seconds. 
-The burst of energy starts at 39.651 seconds; this exact time is called _first break_
-
-The difference between the time when energy was released and the _first break_, that is the time when the energy is recorded by the recording system on the AUV, is 3.651 seconds. 
-
-This means the distance between the source and the receiver is 3.651 s times 1500 m/s = 5.476,5 m, assuming 1500 m/s is a typical value for sound speed in seawater.
-
-We need to know when the _first break_ occurs to have a starting point to extract the data from the stream. 
-
-Using **navigation and localization data** together with **shot data** it is possible to compute the 3D Euclidean distance between the source and the receive. Knowing the distance and the sound speed in seawater the travel time can be computed. Adding the travel time to the actual shooting time the _first break_ is known.
+The horizontal axis is the time axis, unit is the second. This is the excerpt of the signal that will form the SEGY trace.
 
 # GEOMETRY
 Geometry information is organized in a textual file, designed and simplified after the SPS format, namely _GT DATUM_.
@@ -122,7 +111,7 @@ R        3 004 539356.31 5303810.03  3.0  1000 539392.39 5303808.38  5.0  48.0 1
 ```
 
  # SEGY CREATION 
- SEgy creation is managed bt **DAR_TOOLIK** using the following command
+ SEGY creation is managed bt **DAR_TOOLIK** using the following command
 
 
 ```
