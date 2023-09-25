@@ -16,3 +16,7 @@ The documentation is stored in this repository, follow the links below to access
 5) [how to create a SEGY](DOCUMENTATION/SEGY_CREATION_Guide.md)
 6) [how to cope with troubles when creating SEGY](DOCUMENTATION/SEGY_TROUBLESHOOTING.md)
 
+---
+Document created by Marco Gambetta [marco.gambetta@gmail.com]
+
+Last revision: September, 25th 2023
