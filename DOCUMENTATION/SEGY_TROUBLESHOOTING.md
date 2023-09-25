@@ -1,4 +1,4 @@
-#SEGY TROUBLESHOOTING
+<h1>SEGY TROUBLESHOOTING<\h1>
 
 SEGY creation is a sensitive procedure, very sensitive to the multiple inputs required.
 
