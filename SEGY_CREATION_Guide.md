@@ -251,6 +251,22 @@ From  trace header extract ```SHOT POINT NUMBER```, ```SHOT EPOCH BASE``` (secon
 
 The shot epoch is = $1622033224 + (801/1000) = 1622033244.801$ 
 
+<h4>Trace ID Code</h4>
+This code is used to identify the sensor to which the data belongs to.
+
+|BYTE|BYTE|DESCRIPTION|
+|----|----|-----------|
+|28|29|TRACE TYPE ID CODE| 
+
+|TRACE CODE|0|1|2|3|
+|----------|-|-|-|-|
+|SENSOR|INLINE GEO|CROSSLINE GEO|VERTICAL GEO|HYDROPHONE|
+
+
+
+
+
+
 
 
 
