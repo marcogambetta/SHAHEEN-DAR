@@ -24,5 +24,5 @@ Shooting time is independently recorded by the shooting equipment and the corres
 Receiver time is provided by the DAR, embedded in the data file. DAR unit is GPS synchronized so it happens for the Navigation units which benefit from a direct GPS link through surface vehicles.
 
 <table><tr><td>Syncronization refers to the whole ensemble, all the AUV and the SOURCE must share the same time axis, synchronized at least at the actual sampling rate of the fastest sampling device, advisable at 1 millisecond</td></tr></table>
- constant time shift correction can be applied on a _feather format_ data file using [TIME_SHIFT](DOCUMENTATION/DAR_TOOLKIT.md#TIME_SHIFT)
+Constant time shift correction can be applied on a _feather format_ data file using [TIME_SHIFT](DOCUMENTATION/DAR_TOOLKIT.md#TIME_SHIFT)
 
