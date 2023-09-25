@@ -297,3 +297,44 @@ This script enables the user to manipulate the original data by adjusting the ``
 
 <table><tr><td>This script creates a copy of the original data file and then replaces it with the time-shifted version.</td></tr></table>
 
+Invoke TIME_SHIFT with the following command to get help
+```
+python .\TIME_SHIFT.py -h
+
+  -h, --help    show this help message and exit
+  -f F          Input Filename - Feather format
+  -t T          time shift in milliseconds
+  -quiet QUIET  specify quiet YES not be asked for file substitution
+
+```
+The script is designed to prevent the user from replacing the original data, by default running in _verbose_ mode.
+```
+ python .\TIME_SHIFT.py -f .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather -t -12304000
+
+                        Input filename : .\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather
+                            Time shift : -12304000 millis [-1 day, 20:34:56]
+
+        WARNING
+        -------
+        The orignal file will be replaced!
+        A copy of it will be created as :.\DEMODATA\03-AUV-1khz-gain32-50THR-3_5m.raw.1149.feather.ORIGINAL.feather
+
+        >> Type "YES" if agree
+
+```
+If the user denies the permission to replace the original file, the script computes the time-shift to be applied and shows it to the user by displaying the first 4 rows of the database but doesn't overwrite the original file.
+```
+Example of the correction to be applied
+ -----------------------------------
+
+      1622031785.000  --> 1622019481.000        2021-05-26 14:23:05.000000   -->   2021-05-26 10:58:01.000000
+      1622031785.001  --> 1622019481.001        2021-05-26 14:23:05.001000   -->   2021-05-26 10:58:01.001000
+      1622031785.002  --> 1622019481.002        2021-05-26 14:23:05.002000   -->   2021-05-26 10:58:01.002000
+      1622031785.003  --> 1622019481.003        2021-05-26 14:23:05.003000   -->   2021-05-26 10:58:01.003000
+
+ No time shift correction has been applied because the user denied permission to overwrite the input file
+```
+
+
+
+
