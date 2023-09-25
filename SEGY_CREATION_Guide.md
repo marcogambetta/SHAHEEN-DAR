@@ -209,4 +209,38 @@ Once created a SEGY can be straightforwardly viewed inside SEIGSEE
 
 SEGY data is *NOT* filtered and was *NOT PROCESSED* in any kind. The created SEGY is a version of the *RAW DATA*.
 
+## SEGY TRACE FORMAT
+SEGY trace is by default made of 1 or more 240-byte trace headers followed by trace data. Moussafir's SEGY sorts trace using specific trace header keywords to identify the sensor to which the data belongs to.
+
+### Moussafir SEGY Trace header 
+|BYTE|BYTE|DESCRIPTION|
+|0|15|EMPTY|
+|16|19|SHOT POINT NUMBER|
+|20|23|SHOT EPOCH BASE (second)|
+|24|27|SHOT EPOCH MANTISSA (millisecond)|
+|28|29|TRACE TYPE ID CODE| 
+|30|31|RECORDER SERIAL NUMBER|
+|32|55|EMPTY|
+|56|59|WATER DEPTH (cm)|
+|60|63|SOURCE DEPTH (cm)|
+|64|67|RECEIVER DEPTH (cm)|
+|68|69|SOURCE PRESSURE(PSI)|
+|70|71|EMPTY|
+|72|75|SOURCE X (EASTING, meter)|
+|76|79|SOURCE Y (NORTHING, meter)|
+|80|83|RECEIVER X (EASTING, meter)|
+|84|87|RECEIVER Y (NORTHING, meter)|
+|88|113|EMPTY|
+|114|115|NUMBER OF SAMPLES IN THIS TRACE|
+|116|117|SAMPLE INTERVAL (millisecond)|
+|118|155|EMPTY|
+|156|157|SHOT YEAR|
+|158|159|SHOT DAY OF THE YEAR|
+|160|161|SHOT HOUR OF DAY|
+|162|163|SHOT MINUTE OF HOUR|
+|164|165|SHOT SECOND OF MINUTE|
+|166|203|EMPY|
+
+
+
 
