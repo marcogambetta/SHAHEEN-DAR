@@ -1,6 +1,15 @@
 
-# MOUSSAFIR 2020 
+<table>
+<tr>
+<td width="33%"">
 <p align="center">    <img width="100" src="/RES/IMG_97.png"> </p>
+</td>
+<td width="66%">
+# MOUSSAFIR 2020 
+</td>
+</tr>
+</table>
+
 
 This repository contains the code needed to operate the DAR unit, start and stop a mission, download data, and, in the end, create a SEGY
 
