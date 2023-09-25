@@ -23,3 +23,5 @@ Shooting time is independently recorded by the shooting equipment and the corres
 
 Receiver time is provided by the DAR, embedded in the data file. DAR unit is GPS synchronized so it happens for the Navigation units which benefit from a direct GPS link through surface vehicles.
 
+<table><tr><td>Syncronization refers to the whole ensemble, all the AUV and the source must share the same time axis, synchronized at least at the actual sampling rate of the fastest sampling device.</td></tr></table>
+
