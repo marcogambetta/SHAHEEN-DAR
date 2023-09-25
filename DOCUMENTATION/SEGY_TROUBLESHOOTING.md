@@ -19,9 +19,9 @@ Also, the faster the sampling rate, the more accurate needs to be positioning an
 
 This error is fairly easy to compensate for because of its static (constant) nature. The error might be caused by human mistakes or equipment malfunction. In any case it a constant time delay between the clocks.
 
-Shooting time is independently recorded by the shooting equipment and the corresponding data ($SRC_X$,$SRC_Y$,$SRC_Z$,```SHOT_EPOCH```) must be provided.
+Shooting time is independently recorded by the shooting equipment and the corresponding data ($SRC_X$, $SRC_Y$, $SRC_Z$, ```SHOT_EPOCH```) must be provided.
 
 Receiver time is provided by the DAR, embedded in the data file. DAR unit is GPS synchronized so it happens for the Navigation units which benefit from a direct GPS link through surface vehicles.
 
-<table><tr><td>Syncronization refers to the **whole ensemble**, all the AUV and the SOURCE **must share the same time axis**, synchronized at least at the actual sampling rate of the fastest sampling device, advisable at **1 millisecond**</td></tr></table>
+<table><tr><td>Syncronization refers to the whole ensemble, all the AUV and the SOURCE must share the same time axis, synchronized at least at the actual sampling rate of the fastest sampling device, advisable at 1 millisecond</td></tr></table>
 
