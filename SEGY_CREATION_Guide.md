@@ -164,9 +164,9 @@ the output is a SEGY file and a log on the console, hereafter an example
 | 22  |   23   |2021-05-26T12:49:57.701000Z |2021-05-26T12:50:02.700000Z |2021-05-26T12:49:59.701000Z |
 |-----|--------|----------------------------|----------------------------|----------------------------|
 
-              Samples before shot time :    2000
-                         Trace samples :    5000
-                                Output :1149_2021-05-26T12-47-03.660000Z_2021-05-26T12-49-59.701000Z.SGY
+              Samples before shot time:    2000
+                         Trace samples:    5000
+                                Output:1149_2021-05-26T12-47-03.660000Z_2021-05-26T12-49-59.701000Z.SGY
 ```
 
 Everything is plain and easy pending the correct _configuration_ and the correct _geometry_ file.
@@ -186,7 +186,10 @@ ShotEpochShift = -1.178
 The picture shows in orange the actual trace that will be inserted in the SEGY. ```
 SEGY_samples_before_event =200``` is the amount of samples taken **before** the _envent_
 
- _envent_ is the first break, that is the point in time when the emitted wave starts being recorded. This point in time is highlighted in the picture above in _blue_
+ _envent_ is the first break, that is the point in time when the emitted wave starts being recorded. This point in time is highlighted in the picture above with the vertical  _blue_ line right on the left of the burt of energy (high amplitudes)
+
+ ```SEGY_trace_samples = 1500``` sets the number of samples of the actual trace that will be inserted in the SEGY. This number of samples is counted from the _beginning of the trace_ (leftmost point is the overlapped orange signal in the picture above), and not from the _first break_.
+
 
 
 
