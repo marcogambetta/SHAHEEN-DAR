@@ -241,6 +241,8 @@ SEGY trace is by default made of 1 or more 240-byte trace headers followed by tr
 |162|163|SHOT MINUTE OF HOUR|
 |164|165|SHOT SECOND OF MINUTE|
 |166|203|EMPY|
+####How compute shot time####
+
 
 
 
