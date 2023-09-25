@@ -4,7 +4,7 @@
 
 This repository contains the code needed to operate the DAR unit, start and stop a mission, download data, and, in the end, create a SEGY
 
-<p align="center">    <img width="100" src="/RES/IMG_98.png"> </p>
+<p align="center">    <img width="250" src="/RES/IMG_98.png"> </p>
 
 
 The documentation is stored in this repository, follow the links below to access the section of interest.
