@@ -181,7 +181,7 @@ SEGY_samples_before_event =200``` is the amount of samples taken **before** the 
 
 ## First Break computation
 This task is **_critical_** to create a correct SEGY.
-_First brear_ $F_b$ is computed using **GEOMETRY** data.
+_First break_ $F_b$ is computed using **GEOMETRY** data.
 
 $F_b = S_t+(D_{sr} / S_w)$
 
@@ -192,6 +192,8 @@ $D_{sr} = ((S_x-R_x)^2+(S_y-R_y)^2+(S_z-R_z)^2)^{1/2}$
 where $S_{x,y,z}$ is the source 3D position and $R_{x,y,z}$ is the receiver (AUV) 3D position
 
 $S_w$, the sound of speed in the water, is an integer value configured in the configuration file as above shown
+
+Refferring the the picture above, ```SHOT_EPOCH``` is marked with the red vertical line, _First break_ is marked with the blue vertical line. This chart is created using  [```STREAM_SCOPE.py```](DAR_TOOOLIK.md)
 
 
 
