@@ -322,7 +322,7 @@ The script is designed to prevent the user from replacing the original data, by 
         >> Type "YES" if agree
 
 ```
-If the user denies the permission to replace the original file, the script computes the time-shift to be applied and shows it to the user by displaying the first 4 rows of the database but doesn't overwrite the original file.
+If the user denies the permission to replace the original file (typing anything but YES or just pressing ENTER), the script computes the actual _time-shift_ to be applied and shows it to the user by displaying the first 4 rows of the database but doesn't overwrite the original file.
 ```
 Example of the correction to be applied
  -----------------------------------
