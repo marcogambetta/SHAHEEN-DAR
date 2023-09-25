@@ -252,6 +252,7 @@ From  trace header extract ```SHOT POINT NUMBER```, ```SHOT EPOCH BASE``` (secon
 The shot epoch is = $1622033224 + (801/1000) = 1622033244.801$ 
 
 <h4>Trace ID Code</h4>
+
 This code is used to identify the sensor to which the data belongs to.
 
 |BYTE|BYTE|DESCRIPTION|
@@ -265,6 +266,8 @@ This code is used to identify the sensor to which the data belongs to.
 <h4>Trace Attributes/h4>
 
 ![sketch](/RES/IMG_15.png)
+
+The sketch above shows a selection of traces and their attributes. It is visible ```TRCID``` that can be used to select a specific sensor.
 
 
 
