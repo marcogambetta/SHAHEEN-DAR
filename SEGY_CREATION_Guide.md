@@ -193,7 +193,7 @@ where $S_{x,y,z}$ is the source 3D position and $R_{x,y,z}$ is the receiver (AUV
 
 $S_w$, the sound of speed in the water, is an integer value configured in the configuration file as above shown
 
-Refferring the the picture above, ```SHOT_EPOCH``` is marked with the red vertical line, _First break_ is marked with the blue vertical line. This chart is created using  [```STREAM_SCOPE.py```](DAR_TOOLKIT.md)
+Refferring the the picture above, ```SHOT_EPOCH``` is marked with the red vertical line, _First break_ is marked with the blue vertical line. This chart is created using  [```STREAM_SCOPE.py```](DAR_TOOLKIT.md#STREAM_SCOPE)
 
 
 
