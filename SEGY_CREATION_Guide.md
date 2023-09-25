@@ -179,6 +179,13 @@ SEGY_samples_before_event =200``` is the amount of samples taken **before** the 
 
  ```SEGY_trace_samples = 1500``` sets the number of samples of the actual trace that will be inserted in the SEGY. This number of samples is counted from the _beginning of the trace_ (leftmost point is the overlapped orange signal in the picture above), and not from the _first break_.
 
+## First Break computation
+This task is **_critical_** to create a correct SEGY.
+_First brear_ is computed using **GEOMETRY** data.
+
+$F_b = D_{sr} / S_w$
+
+
 
 
 
