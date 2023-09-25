@@ -193,9 +193,12 @@ where $S_{x,y,z}$ is the source 3D position and $R_{x,y,z}$ is the receiver (AUV
 
 $S_w$, the sound of speed in the water, is an integer value configured in the configuration file as above shown
 
-Refferring the the picture above, ```SHOT_EPOCH``` is marked with the red vertical line, _First break_ is marked with the blue vertical line. This chart is created using  [```STREAM_SCOPE.py```](DAR_TOOLKIT.md#STREAM_SCOPE)
+Referring to the picture above, ```SHOT_EPOCH``` is marked with the red vertical line, _First break_ is marked with the blue vertical line. This chart is created using  [```STREAM_SCOPE.py```](DAR_TOOLKIT.md#STREAM_SCOPE)
 
 
+## View created SEGY - SEISEE
+a conveninet thind part tool to view the newly created SEGY is the software named _SEISEE_, which is available in the RES folder of this repository. SEISEE is a windows base application that must be installed.
+The author takes no responsibility of this software and the readed is solely responsibile of its installation and use, including all possible damages that may occur to the system used and the data.
 
 
 
