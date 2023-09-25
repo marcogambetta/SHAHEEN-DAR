@@ -207,4 +207,6 @@ Once created a SEGY can be straightforwardly viewed inside SEIGSEE
 
 ![sketch](/RES/IMG_13.png)
 
+SEGY data is *NOT* filtered and was *NOT PROCESSED* in any kind. The created SEGY is a version of the *RAW DATA*.
+
 
