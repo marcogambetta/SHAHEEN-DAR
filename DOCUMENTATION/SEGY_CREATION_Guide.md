@@ -263,7 +263,7 @@ This code is used to identify the sensor to which the data belongs to.
 |----------|-|-|-|-|
 |SENSOR|INLINE GEO|CROSSLINE GEO|VERTICAL GEO|HYDROPHONE|
 
-<h4>Trace Attributes/h4>
+<h4>Trace Attributes</h4>
 
 ![sketch](/RES/IMG_15.png)
 
