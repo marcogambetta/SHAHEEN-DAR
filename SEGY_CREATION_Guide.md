@@ -170,3 +170,15 @@ the output is a SEGY file and a log on the console, hereafter an example
 ```
 
 Everything is plain and easy pending the correct _configuration_ and the correct _geometry_ file.
+
+## Configuration file [SEGY Creation parameters]
+
+The following are configuration file parameters to be set to create a SEGY.
+```
+SEGY_samples_before_event =200
+SEGY_trace_samples = 1500
+Sound_Speed_in_water = 1480
+ShotEpochShift = -1.178
+```
+
+![sketch](/RES/IMG_12.png)
