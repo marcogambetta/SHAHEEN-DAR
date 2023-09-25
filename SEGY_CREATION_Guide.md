@@ -269,7 +269,13 @@ This code is used to identify the sensor to which the data belongs to.
 
 The sketch above shows a selection of traces and their attributes. It is visible ```TRCID``` that can be used to select a specific sensor.
 
+![sketch](/RES/IMG_16.png)
 
+Trace selection can be done using _Filter_ option and providing the wanted _expression_ ```equal(H(29,2),3)```; this expression selects ```TRCID == 3``` which corresponds to the ```HYDROPHONE``` 
+
+![sketch](/RES/IMG_17.png)
+
+The previous sketch show the selection applied
 
 
 
