@@ -182,3 +182,11 @@ ShotEpochShift = -1.178
 ```
 
 ![sketch](/RES/IMG_12.png)
+
+The picture shows in orange the actual trace that will be inserted in the SEGY. ```
+SEGY_samples_before_event =200``` is the amount of samples taken **before** the _envent_
+
+ _envent_ is the first break, that is the point in time when the emitted wave starts being recorded. This point in time is highlighted in the picture above in _blue_
+
+
+
