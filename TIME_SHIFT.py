@@ -44,6 +44,11 @@ h = []
 for i in [0,1,2,3]:
     h.append(Sqx.Dataframe.Timestamp.iloc[i])
 Sqx.Dataframe.Timestamp=Sqx.Dataframe.Timestamp+time_correction
+#remove dataframe column in place
+Sqx.Dataframe.drop('Datetime', axis=1, inplace=True)
+#insert Datetime created with shifted Timestamp
+Sqx.Dataframe.insert(0, 'Datetime', pd.to_datetime(Sqx.Dataframe['Timestamp'], unit='s', utc=False), allow_duplicates=False)
+
 print('\nExample of the correction to be applied\n','-'*35,'\n')
 for i in range(4):
     print ("{0:>20.3f}  --> {1:<20.3f}  {2:<24s}   -->   {3:<24s}".format(h[i],
