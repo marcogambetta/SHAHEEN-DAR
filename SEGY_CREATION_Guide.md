@@ -242,7 +242,7 @@ SEGY trace is by default made of 1 or more 240-byte trace headers followed by tr
 |164|165|SHOT SECOND OF MINUTE|
 |166|203|EMPY|
 
-####How compute shot time####
+<h4>How compute shot time</h4>
 Shot Epoch is Unix time (also known as Epoch time, Posix time, seconds since the Epoch, or UNIX Epoch time). Unix Time is a system for describing a point in time. It is the number of seconds that have elapsed since the Unix epoch, minus leap seconds; the Unix epoch is ```00:00:00 UTC on 1 January 1970``` (an arbitrary date)
 
 From  trace header extract ```SHOT POINT NUMBER```, ```SHOT EPOCH BASE``` (second) and ```SHOT EPOCH MANTISSA``` (millisecond)
