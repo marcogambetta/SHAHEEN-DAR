@@ -15,7 +15,7 @@ As per the Oil and Gas industry, errors larger than a few milliseconds make the 
 
 Also, the faster the sampling rate, the more accurate needs to be positioning and clock synchronization.
 
-##DC Timeshift
+<h2>DC Timeshift</h2>
 
 This error is fairly easy to compensate for because of its static (constant) nature. The error might be caused by human mistakes or equipment malfunction. In any case it a constant time delay between the clocks.
 
