@@ -4,9 +4,15 @@ This document provides the needed detail to create a seismic SEGY merging DAR se
 
 ## Foreword
 **SEGY** is an international standard for seismic data exchange and storage, designed to host multi-dimensional data with geographical and time reference.
+
+
+[SEGY description]: https://en.wikipedia.org/wiki/SEG-Y
+
+[SEGY rev 1.0 structure format]:https://library.seg.org/pb-assets/technical-standards/seg_y_rev1-1686080991247.pdf
+
 Bare sensor recordings are nearly useless to the seismic industry because the description of elastic wave propagation requires accurate spatial and time localization.
 
-a SEGY is, generally speaking, a collection of _seismic traces_. Each _seismic trace_ can be conceptualized as an _object_ provided with different data types. Some of those data are _signals_ as recorded by sensors, some others are values describing features such as the receive position, the sampling frequency, the source position, and the shooting time.
+A _SEGY_ is, generally speaking, a collection of _seismic traces_. Each _seismic trace_ can be conceptualized as an _object_ provided with different data types. Some of those data are _signals_ as recorded by sensors, some others are values describing features such as the receive position, the sampling frequency, the source position, and the shooting time.
 A comprehensive SGY description is provided in section nnn of this document.
 
 ## Simplified SEGY creation procedure
