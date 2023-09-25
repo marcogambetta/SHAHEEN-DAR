@@ -214,6 +214,7 @@ SEGY trace is by default made of 1 or more 240-byte trace headers followed by tr
 
 ### Moussafir SEGY Trace header 
 |BYTE|BYTE|DESCRIPTION|
+|----|----|-----------|
 |0|15|EMPTY|
 |16|19|SHOT POINT NUMBER|
 |20|23|SHOT EPOCH BASE (second)|
