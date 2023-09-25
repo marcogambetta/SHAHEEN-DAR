@@ -291,3 +291,9 @@ A list of suitable color names is available here https://matplotlib.org/stable/g
 
 
 
+# TIME_SHIFT
+
+This script enables the user to manipulate the original data by adjusting the ```Timestamp```
+
+<table><tr><td>This script creates a copy of the original data file and then replaces it with the time-shifted version.</td></tr></table>
+
