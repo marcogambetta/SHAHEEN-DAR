@@ -183,9 +183,9 @@ SEGY_samples_before_event =200``` is the amount of samples taken **before** the 
 This task is **_critical_** to create a correct SEGY.
 _First brear_ $F_b$ is computed using **GEOMETRY** data.
 
-$F_b = D_{sr} / S_w$
+$F_b = S_t+(D_{sr} / S_w)$
 
-$D_{sr}$ is the Euclidean distance between source and receiver, , unit $[m]$. $S_w$ is the sound speed in water, unit $[m/s]$
+S$_t$ is the ```SHOT_EPOCH```, that is the point in time when the shot occurred, unit $[s]$. $D_{sr}$ is the Euclidean distance between source and receiver, unit $[m]$. $S_w$ is the sound speed in water, unit $[m/s]$
 
 $D_{sr} = ((S_x-R_x)^2+(S_y-R_y)^2+(S_z-R_z)^2)^{1/2}$
 
