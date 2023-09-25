@@ -185,7 +185,7 @@ _First brear_ $F_b$ is computed using **GEOMETRY** data.
 
 $F_b = S_t+(D_{sr} / S_w)$
 
-$_t$ is the ```SHOT_EPOCH```, that is the point in time when the shot occurred, unit $[s]$. $D_{sr}$ is the Euclidean distance between source and receiver, unit $[m]$. $S_w$ is the sound speed in water, unit $[m/s]$
+$S_t$ is the ```SHOT_EPOCH```, that is the point in time when the shot occurred, unit $[s]$. $D_{sr}$ is the Euclidean distance between source and receiver, unit $[m]$. $S_w$ is the sound speed in water, unit $[m/s]$
 
 $D_{sr} = ((S_x-R_x)^2+(S_y-R_y)^2+(S_z-R_z)^2)^{1/2}$
 
