@@ -39,6 +39,11 @@ It is very advisable, prior to and after acquisition and despite the fact that D
 5) Take note of the UTC test time
 6) Download the data and extract the time-slice corresponding the tests (initial and final) so to have two feather-format files for each AUV
 7) Inspect the files with ```STREAM_VIEW```
-8) 
+![sketch](/RES/IMG_18.png)
+8) place the cursor at the first break (bubble A) and take note of the time (bubble B) 
+9) Iterate the procedure for all the AUV and both for initial and final synchronization acquisition
+10) Assuming initial and final acquisition times report constant shifts, apply the shift to have a unique time origin.
+
+    In the case of time shift drifting the procedure is complex and a tailored script must be created.
 
 
