@@ -178,11 +178,11 @@ ShotEpochShift = -1.178
 ![sketch](/RES/IMG_12.png)
 
 The picture shows in orange the actual trace that will be inserted in the SEGY. ```
-SEGY_samples_before_event =200``` is the amount of samples taken **before** the _envent_
+SEGY_samples_before_event =200``` is the amount of samples taken **before** the _event_
 
- _envent_ is the first break, that is the point in time when the emitted wave starts being recorded. This point in time is highlighted in the picture above with the vertical  _blue_ line right on the left of the burt of energy (high amplitudes)
+ The _event_ is the first break, that is the point in time when the emitted wave starts being recorded. This point in time is highlighted in the picture above with the vertical  _blue_ line right on the left of the burst of energy (high amplitudes)
 
- ```SEGY_trace_samples = 1500``` sets the number of samples of the actual trace that will be inserted in the SEGY. This number of samples is counted from the _beginning of the trace_ (leftmost point is the overlapped orange signal in the picture above), and not from the _first break_.
+ ```SEGY_trace_samples = 1500``` sets the number of samples of the actual trace that will be inserted in the SEGY. This number of samples is counted from the _beginning of the trace_ (the leftmost point is the overlapped orange signal in the picture above), and not from the _first break_.
 
 ## First Break computation
 This task is **_critical_** to create a correct SEGY.
