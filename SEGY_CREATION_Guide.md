@@ -187,7 +187,7 @@ $F_b = D_{sr} / S_w$
 
 $D_{sr}$ is the Euclidean distance between source and receiver, , unit $[m]$. $S_w$ is the sound speed in water, unit $[m/s]$
 
-$D_{sr} = ((S_x-R_x)^2+(S_y-R_y)^2+(S_z-R_z)^2)^(1/2)$
+$D_{sr} = ((S_x-R_x)^2+(S_y-R_y)^2+(S_z-R_z)^2)^{1/2}$
 
 where $S_{x,y,z}$ is the source 3D position and $R_{x,y,z}$ is the receiver (AUV) 3D position
 
