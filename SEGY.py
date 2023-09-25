@@ -32,6 +32,7 @@ class segy:
         print('|{0:^5s}|{1:^8s}|{2:^28s}|{3:^28s}|{4:^28s}|'.format('-'*5,'-'*8, '-'*28, '-'*28, '-'*28))
         print('|{0:^5s}|{1:^8s}|{2:^28s}|{3:^28s}|{4:^28s}|'.format('#','SPNB', 'START DATETIME', 'END DATETIME', 'SHOT DATETIME'))
         print('|{0:^5s}|{1:^8s}|{2:^28s}|{3:^28s}|{4:^28s}|'.format('-'*5,'-'*8, '-'*28, '-'*28, '-'*28))
+        #slice Dataframe to get the data for the single trace
         for j, idx in enumerate(map(int,self.geometry.Dataframe['Expected_FB_Index'])):
             print('Adding shot              '+str(j)+' @ '+str(idx) , end="\r", flush=True)
             _ini = idx-self.samples_before_event
@@ -79,7 +80,7 @@ class segy:
         #    01234567890123456789012345678901234567890123456789012345678901234567890123456789
         h =  'C1  GRAALTECH s.r.l.'.ljust(80,' ')
         h += 'C2  SEGY created with DAR_TOOLKIT rev.10'.ljust(80,' ')
-        h += 'C3  Author: M.Gambetta [marco.gambetta@graaltech.it]'.ljust(80, ' ')
+        h += 'C3  Author: M.Gambetta [marco.gambetta@gmail.com]'.ljust(80, ' ')
         s= 'C4  Coordinate system - Projection '+self.geometry._projection +', Zone '+self.geometry._zone
         h += s.ljust(80, ' ')
         h += 'C5  Trace units : 0 = mm/s, 1 = microbar'.ljust(80, ' ')
@@ -97,8 +98,8 @@ class segy:
         self.st.stats.textual_file_header = h
         self.st.stats.binary_file_header = SEGYBinaryFileHeader()
         self.st.stats.binary_file_header.trace_sorting_code = 5
-        ix = int(self.geometry.Dataframe['INDEX'].iloc[0])
-        ex= int(self.geometry.Dataframe['INDEX'].iloc[-1])
+        ix = int(self.geometry.Dataframe['Expected_FB_Index'].iloc[0])
+        ex= int(self.geometry.Dataframe['Expected_FB_Index'].iloc[-1])
 
         s = str(UTCDateTime(self.seismic.Dataframe['Timestamp'].iloc[ix]))+'_'+str(UTCDateTime(self.seismic.Dataframe['Timestamp'].iloc[ex]))
         self.Filename = str(self.seismic.Attributes['Board Serial Number'])+'_'+s.replace(':','-')+'.SGY'
