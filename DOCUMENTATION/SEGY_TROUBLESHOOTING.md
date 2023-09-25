@@ -28,3 +28,17 @@ Constant time shift correction can be applied on a _feather format_ data file us
 
 [the script : TIME_SHIFT](DAR_TOOLKIT.md#TIME_SHIFT)
 
+<h3>Proceure to obtain data for AUV Time alignment</h3>
+
+It is very advisable, prior to and after acquisition and despite the fact that DARs are GPS 1PPS synchronized, to make a specific acquisition that can be helpful to retrieve synchronization.
+
+1) place the units in mutual close proximity, ideally, the whole ensemble should stay in a box on 1.5 x 1.5 m. If the units touch each other it is not an issue. the unit can be tied together.
+2) All the units must be in acquisition mode.
+3) make a sequence of shots at a suitable distance, depending on the volume and pressure fired. The recorded signal should not saturate and the wave should be well formed; some preliminary tests might be required.
+4) the sequence of shots should last the needed time to collect a dozen of well-formed shot's recording with adequate time separation between each first break.
+5) Take note of the UTC test time
+6) Download the data and extract the time-slice corresponding the tests (initial and final) so to have two feather-format files for each AUV
+7) Inspect the files with ```STREAM_VIEW```
+8) 
+
+
