@@ -18,7 +18,7 @@ This repository contains the code needed to operate the DAR unit, start and stop
 
 The documentation is stored in this repository, follow the links below to access the section of interest.
 
-1) [how to operate DAR](DOCUMENTATION/HOW_OPERATE_DAR.md)
+1) [how to operate DAR, start,/stop acquisition, synchronize and download data](DOCUMENTATION/HOW_OPERATE_DAR.md)
 2) [how to use DAR_TOOLKIT to manipulate, store, export data](DOCUMENTATION/DAR_TOOLKIT.md)
 3) [how to use STREAM_SCOPE to view data](DOCUMENTATION/DAR_TOOLKIT.md#STREAM_SCOPE)
 4) [how to use TIME_SHIFT to change the time axis of a datafile](DOCUMENTATION/DAR_TOOLKIT.md#TIME_SHIFT)
