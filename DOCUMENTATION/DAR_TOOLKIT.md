@@ -400,6 +400,8 @@ la---          21/09/2023    10:05           3127 03-50-05.gtd2
 la---          26/09/2023    10:39           5761 03-50-05.gtd2.receiver.kml
 la---          26/09/2023    10:39           5753 03-50-05.gtd2.source.kml
 ```
- To view the kml please refer to Google Earth documentation. (https://www.google.com/intl/it/earth/about/versions/#earth-pro)
+ To view the ```kml``` files please refer to Google Earth documentation. (https://www.google.com/intl/it/earth/about/versions/#earth-pro)
 
+![sketch](/RES/IMG_20.png)
+the picture above shows and example of both kml 
 
