@@ -45,5 +45,14 @@ It is very advisable, prior to and after acquisition and despite the fact that D
 10) Assuming initial and final acquisition times report constant shifts, apply the shift to have a unique time origin.
 
     In the case of time shift drifting the procedure is complex and a tailored script must be created.
+    
+<h2>Source - AUV lack of synchronisation</h2>
+It may happen that AUV and SOURCE time axis are not synchronized, which means there is a constant time shift between the clocks. 
+
+Because AUV, DAR, and SOURCE **must** be synchronized this issue has to be solved.
+
+<h3>Check the correctness</h3>
+The potential time displacement can be verified using the propagation of sound waves in seawater. Since the speed of sound in seawater is constant at the scale of the transformation considered, the arrival time of the wave front at a given receiver can be calculated. This must correspond to the actual burst of energy recorded.
+
 
 
