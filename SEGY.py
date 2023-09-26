@@ -44,8 +44,8 @@ class segy:
                                                              str(UTCDateTime(slc['Timestamp'].iloc[0])),
                                                              str(UTCDateTime(slc['Timestamp'].iloc[-1])),
                                                              str(UTCDateTime(self.seismic.Dataframe['Timestamp'].iloc[idx]))))
-            _y = np.asarray(slc[['Channel0','Channel1','Channel2','Channel3']])  # actual trace data
-            for i, c in enumerate(['Channel0','Channel1','Channel2','Channel3']):
+            _y = np.asarray(slc[['Channel0','Channel1','Channel2','Channel3','TILT_X','TILT_Y','TILT_Z']])  # actual trace data
+            for i, c in enumerate(['Channel0','Channel1','Channel2','Channel3','TILT_X','TILT_Y','TILT_Z']):
                 y = _y[:, i]
                 atrace = Trace(data=np.asarray(y, dtype=np.float32))
                 atrace.stats.delta = slc['Timestamp'].iloc[1] - slc['Timestamp'].iloc[0]
