@@ -53,6 +53,7 @@ Because AUV, DAR, and SOURCE **must** be synchronized this issue has to be solve
 
 <h3>Check the correctness</h3>
 The potential time displacement can be verified using the propagation of sound waves in seawater. Since the speed of sound in seawater is constant at the scale of the transformation considered, the arrival time of the wave front at a given receiver can be calculated. This must correspond to the actual burst of energy recorded.
+
 _First break_ $F_b$ is computed using **GEOMETRY** data.
 
 $F_b = S_t+(D_{sr} / S_w)$
