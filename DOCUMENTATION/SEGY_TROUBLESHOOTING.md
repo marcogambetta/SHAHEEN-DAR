@@ -66,6 +66,13 @@ where $S_{x,y,z}$ is the source 3D position and $R_{x,y,z}$ is the receiver (AUV
 
 $S_w$, the sound of speed in the water, is an integer value configured in the configuration file 
 
+![sketch](/RES/IMG_19.png)
+
+The sketch above shows a typical lack of synchronization between DAR/AUV and the GUN CONTROLLER (the SOURCE)
+
+The vertical red line shows the provided shooting time and the computation provides the _Expected First break_, shown by the vertical blue line.
+
+
 
 
 
