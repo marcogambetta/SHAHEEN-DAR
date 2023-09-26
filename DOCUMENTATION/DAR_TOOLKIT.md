@@ -336,5 +336,70 @@ Example of the correction to be applied
 ```
 
 
+# GTDtoKML
+
+This script interprets the GT DATUM file ver 2 (aka the **GEOMETRY** file) and creates a corresponding geographical representation of shots and receivers using the Google Earth engine and visualization app.
+
+Invoke GTDtoKML with the following command to get help
+```
+python  .\GTDtoKML.py -h
+
+usage: GTDtoKML.py [-h] -fi FI [-d D]
+
+GDT to KML - Shot map created from Seismic Geometry
+
+options:
+  -h, --help  show this help message and exit
+  -fi FI      GDT file (input)
+  -d D        if -d TRUE, it returns the list of shot points with planar coordinates (optional)
+
+```
+
+
+optionally the script returns a list of shot locations 
+
+```
+          Input file : .\DEMODATA\03-50-05.gtd2
+
+
+          Projection : utm
+          Input file : 30
+               Shots : 22
+          Ouput file : .\DEMODATA\03-50-05.gtd2.source.kml
+
+RECEIVER 001  LOCATION
+      SHOT   RECEIVER EASTING      NORTHING     LONGITUDE        LATITUDE
+      001        001  539356.31    5303810.03   -2.473557525035  47.886415489308
+      002        002  539356.31    5303810.03   -2.473557525035  47.886415489308
+      003        003  539356.31    5303810.03   -2.473557525035  47.886415489308
+      004        004  539356.31    5303810.03   -2.473557525035  47.886415489308
+      005        005  539356.31    5303810.03   -2.473557525035  47.886415489308
+      006        006  539356.31    5303810.03   -2.473557525035  47.886415489308
+      007        007  539356.31    5303810.03   -2.473557525035  47.886415489308
+      008        008  539356.31    5303810.03   -2.473557525035  47.886415489308
+      009        009  539356.31    5303810.03   -2.473557525035  47.886415489308
+      010        010  539356.31    5303810.03   -2.473557525035  47.886415489308
+      011        011  539356.31    5303810.03   -2.473557525035  47.886415489308
+      012        012  539356.31    5303810.03   -2.473557525035  47.886415489308
+      013        013  539356.31    5303810.03   -2.473557525035  47.886415489308
+      014        014  539356.31    5303810.03   -2.473557525035  47.886415489308
+      015        015  539356.31    5303810.03   -2.473557525035  47.886415489308
+      016        016  539356.31    5303810.03   -2.473557525035  47.886415489308
+      017        017  539356.31    5303810.03   -2.473557525035  47.886415489308
+      018        018  539356.31    5303810.03   -2.473557525035  47.886415489308
+      019        019  539356.31    5303810.03   -2.473557525035  47.886415489308
+      021        021  539356.31    5303810.03   -2.473557525035  47.886415489308
+      022        022  539356.31    5303810.03   -2.473557525035  47.886415489308
+      023        023  539356.31    5303810.03   -2.473557525035  47.886415489308
+
+```
+
+the standard output is a pair of files placed in the same folder of the input data 
+```
+la---          21/09/2023    10:05           3127 03-50-05.gtd2
+la---          26/09/2023    10:39           5761 03-50-05.gtd2.receiver.kml
+la---          26/09/2023    10:39           5753 03-50-05.gtd2.source.kml
+```
+ To view the kml please refer to Google Earth documentation. (https://www.google.com/intl/it/earth/about/versions/#earth-pro)
 
 
