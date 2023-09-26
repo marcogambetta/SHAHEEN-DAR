@@ -80,7 +80,7 @@ The constant time shift can be compensated by setting the ```ShotEpochShift``` p
 ShotEpochShift =-1.234
 ```
 
-```ShotEpochShift`` is a _real_ value whose unit is _seconds_. This value is algebraically added to the provided shooting time when it is necessary. The GEOMETRY file is **not** altered.
+```ShotEpochShift``` is a _real_ value whose unit is _seconds_. This value is algebraically added to the provided shooting time when it is necessary. The GEOMETRY file is **not** altered.
 
 
 
