@@ -264,9 +264,9 @@ This code is used to identify the sensor to which the data belongs to.
 |----|----|-----------|
 |28|29|TRACE TYPE ID CODE| 
 
-|TRACE CODE|0|1|2|3|
-|----------|-|-|-|-|
-|SENSOR|INLINE GEO|CROSSLINE GEO|VERTICAL GEO|HYDROPHONE|
+|TRACE CODE|0|1|2|3|4|5|6|
+|----------|-|-|-|-|-|-|-|
+|SENSOR|INLINE GEO|CROSSLINE GEO|VERTICAL GEO|HYDROPHONE|TILT_X|TILT_Y|TILT_Z|
 
 <h4>Trace Attributes</h4>
 
