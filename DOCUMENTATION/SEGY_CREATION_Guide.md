@@ -214,6 +214,8 @@ Once created a SEGY can be straightforwardly viewed inside SEIGSEE
 
 SEGY data is *NOT* filtered and was *NOT PROCESSED* in any kind. The created SEGY is a version of the *RAW DATA*.
 
+SEGY is a collection of traces. Note that for _each_ shot 6 traces are created because there are 6 channels of interest, 4 are seismic data provided by the geophones/hydrophone, 3 are the orientation of the the triad of geophones as three tilt angles  
+
 ## SEGY TRACE FORMAT
 SEGY trace is by default made of 1 or more 240-byte trace headers followed by trace data. Moussafir's SEGY sorts trace using specific trace header keywords to identify the sensor to which the data belongs to.
 
