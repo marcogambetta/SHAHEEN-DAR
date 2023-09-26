@@ -29,4 +29,4 @@ The documentation is stored in this repository, follow the links below to access
 ---
 Document created by Marco Gambetta [marco.gambetta@gmail.com]
 
-Last revision: September, 25th 2023
+Last revision: September, 26th 2023
