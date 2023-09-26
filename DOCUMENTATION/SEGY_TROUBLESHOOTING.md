@@ -53,8 +53,18 @@ Because AUV, DAR, and SOURCE **must** be synchronized this issue has to be solve
 
 <h3>Check the correctness</h3>
 The potential time displacement can be verified using the propagation of sound waves in seawater. Since the speed of sound in seawater is constant at the scale of the transformation considered, the arrival time of the wave front at a given receiver can be calculated. This must correspond to the actual burst of energy recorded.
-Detail on how to compute the expected First Break time is in section :
-[](/SEGY_CREATION_Guide.md#First Break computation)
+_First break_ $F_b$ is computed using **GEOMETRY** data.
+
+$F_b = S_t+(D_{sr} / S_w)$
+
+$S_t$ is the ```SHOT_EPOCH```, that is the point in time when the shot occurred, unit $[s]$. $D_{sr}$ is the Euclidean distance between source and receiver, unit $[m]$. $S_w$ is the sound speed in water, unit $[m/s]$
+
+$D_{sr} = ((S_x-R_x)^2+(S_y-R_y)^2+(S_z-R_z)^2)^{1/2}$
+
+where $S_{x,y,z}$ is the source 3D position and $R_{x,y,z}$ is the receiver (AUV) 3D position
+
+$S_w$, the sound of speed in the water, is an integer value configured in the configuration file 
+
 
 
 
