@@ -29,7 +29,7 @@ Config file has other information intended for processing that will be discussed
 
 Data acquisition is managed by DAR_TEST software, created by SBGS [SeaBed GeoSolutions]. This company winded off in 2018, thus there is no support available for their products.
 
-DAR_TEST suite is available for download within this repository [DAR_TEST Suite](RES\205-DAR_SOFTWARE.zip). DAR_TEST documentation from the author is included in the archive.
+DAR_TEST suite is available for download within this repository [DAR_TEST Suite](RES\DAR_SOFTWARE.zip). DAR_TEST documentation from the author is included in the archive.
 
 
 ### Start-up Acquisition Procedure 
