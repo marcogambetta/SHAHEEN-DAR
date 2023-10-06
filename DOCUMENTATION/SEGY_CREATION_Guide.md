@@ -200,6 +200,23 @@ $S_w$, the sound of speed in the water, is an integer value configured in the co
 
 Referring to the picture above, ```SHOT_EPOCH``` is marked with the red vertical line, _First break_ is marked with the blue vertical line. This chart is created using  [```STREAM_SCOPE.py```](DAR_TOOLKIT.md#STREAM_SCOPE)
 
+## USE SHOT EPOCH IN PLACE OF FIRST BREAK ##
+
+it is possible to use `SHOT EPOCH` in place of the expected _First Break_
+
+Set `UseShotTime = 1` to use ShotEpoch as a time reference for trace extraction.
+
+```
+SEGY_samples_before_event =500
+SEGY_trace_samples = 3500
+Sound_Speed_in_water = 1480
+ShotEpochShift = -1.178
+UseShotTime = 1
+```
+note that `SEGY_samples_before_event =500` in this case refers to the actual Shooting time as provided by the Gun Controller 
+
+
+
 
 ## View created SEGY - SEISEE
 A convenient third-party tool to view the newly created SEGY is the software named _SEISEE_, which is available in the RES folder of this repository. SEISEE is a Windows-based application that must be installed.
