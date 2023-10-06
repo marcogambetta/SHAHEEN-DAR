@@ -6,7 +6,6 @@ import pprint
 
 parser = argparse.ArgumentParser(description='GDT to KML - Shot map created from Seismic Geometry')
 parser.add_argument('-fi', type=str, help='GDT file (input)',required=True)
-parser.add_argument('-fo', type=str, help='KML file (output)',required=False)
 parser.add_argument('-d', type=str, help='if -d TRUE, it returns the list of shot points with planar coordinates (optional)')
 args = parser.parse_args()
 

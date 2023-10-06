@@ -12,6 +12,7 @@ class gtd:
         self.Dataframe = None
         self.SoundSpeedInWater=config['Sound_Speed_in_water']
         self.ShotEpochShift=config['ShotEpochShift']
+        self.UseShotTime = config['UseShotTime']
 
     def show_Dataframe(self):
         print('\n', '-' * 120, '\n\tGEOMETRY\n', '-' * 120)
@@ -67,6 +68,9 @@ class gtd:
                                               np.square(self.Dataframe['SHOT Z [DEPTH]'] - self.Dataframe['RECEIVER Z [DEPTH]']))
         self.Dataframe['DirectWave_Traveltime']= self.Dataframe['3D_Offset'] / float(self.SoundSpeedInWater)
         self.Dataframe['Expected_FB_Timestamp'] = self.Dataframe['SHOT EPOCH']+self.Dataframe['DirectWave_Traveltime']
+        #fake Expected_FB_Timestamp == shot epoch on demand
+        if self.UseShotTime == 1:
+            self.Dataframe['Expected_FB_Timestamp'] = self.Dataframe['SHOT EPOCH']
 
         #compute index in seismic dataframe corresponding to the 'Expected_FB_Timestamp'
         expected_fb_index = []
